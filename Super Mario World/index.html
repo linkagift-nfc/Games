@@ -1,185 +1,140 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>RetroTag NFC - Super Mario World</title>
+<title>Super Mario World</title>
 
 <style>
 
 *{
+margin:0;
+padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
 }
-
 
 body{
 
-margin:0;
-min-height:100vh;
+background:linear-gradient(180deg,#d9d9d9,#bdbdbd);
+
+font-family:Arial,Helvetica,sans-serif;
+
+height:100vh;
 
 display:flex;
-align-items:center;
+
 justify-content:center;
 
-background:
-linear-gradient(
-#42c9ff,
-#8bd34a
-);
+align-items:center;
+
+overflow:hidden;
 
 }
 
 
-/* CARTUCHO */
+.container{
 
-.cartucho{
-
-width:90%;
+width:92%;
 max-width:420px;
 
-background:#f5f5f5;
+background:#efefef;
 
-padding:25px;
+border-radius:28px;
 
-border-radius:22px;
-
-border:8px solid #38a847;
-
-box-shadow:
-0 15px 35px rgba(0,0,0,.5);
+padding:30px;
 
 text-align:center;
 
-}
+box-shadow:0 15px 40px rgba(0,0,0,.35);
 
-
-
-.logo{
-
-font-size:20px;
-
-font-weight:bold;
-
-letter-spacing:4px;
-
-color:#333;
+border:4px solid #9b9b9b;
 
 }
-
 
 
 h1{
 
-font-size:26px;
+font-size:34px;
 
-margin:18px 0;
+margin-bottom:20px;
 
-color:#d72626;
+color:#4b2d91;
 
 }
-
 
 
 .capa{
 
-width:80%;
+width:100%;
 
-border-radius:12px;
+border-radius:18px;
 
-box-shadow:
-0 8px 15px #555;
+margin-bottom:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.35);
 
 }
-
 
 
 .estrelas{
 
 font-size:24px;
 
-color:#f5b400;
+color:#FFD700;
 
-margin:15px;
-
-}
-
-
-
-.snes{
-
-font-weight:bold;
-
-color:#444;
+margin-bottom:25px;
 
 }
 
 
+.botao{
 
-button{
-
-margin-top:25px;
-
-width:90%;
+width:100%;
 
 padding:18px;
-
 
 font-size:22px;
 
 font-weight:bold;
 
+background:#6d35c7;
+
+color:#fff;
 
 border:none;
 
-border-radius:12px;
-
-
-background:#f5b400;
-
-color:#222;
-
-
-box-shadow:
-0 8px 0 #a56d00;
-
+border-radius:16px;
 
 cursor:pointer;
 
-}
-
-
-
-button:active{
-
-transform:translateY(8px);
-
-box-shadow:none;
+transition:.25s;
 
 }
 
+.botao:hover{
+
+background:#5422a8;
+
+transform:scale(1.02);
+
+}
 
 
 .info{
 
 margin-top:25px;
 
-padding-top:15px;
+font-size:16px;
 
-border-top:2px solid #aaa;
+color:#555;
 
-color:#444;
-
-line-height:1.8;
+line-height:1.6;
 
 }
-
-
-
-/* TELA DE CARREGAMENTO */
 
 
 #loading{
@@ -189,225 +144,161 @@ display:none;
 position:fixed;
 
 top:0;
-
 left:0;
 
 width:100%;
-
 height:100%;
-
 
 background:#111;
 
-
-color:white;
-
-
-align-items:center;
+color:#fff;
 
 justify-content:center;
+align-items:center;
 
+flex-direction:column;
 
-text-align:center;
-
-
-font-size:22px;
-
-
-z-index:999;
-
+z-index:9999;
 
 }
 
 
-.loading-box{
+.cartucho{
+
+font-size:42px;
+
+margin-bottom:20px;
+
+animation:flutuar 1s infinite;
+
+}
 
 
-animation:pulse 1.5s infinite;
+.loading-text{
 
+font-size:28px;
+
+font-weight:bold;
+
+margin-bottom:15px;
+
+}
+
+
+.sub{
+
+font-size:18px;
+
+color:#ccc;
+
+margin-bottom:35px;
 
 }
 
 
 .barra{
 
+width:280px;
 
-margin-top:20px;
-
-width:220px;
-
-height:15px;
-
+height:10px;
 
 background:#333;
 
-
 border-radius:20px;
-
 
 overflow:hidden;
 
-
 }
-
 
 
 .progresso{
 
-
 height:100%;
 
-width:100%;
+width:0%;
 
+background:#6d35c7;
 
-background:#f5b400;
-
-
-animation:carregar 3s linear;
-
+animation:carregar 2.2s linear forwards;
 
 }
-
 
 
 @keyframes carregar{
 
+0%{width:0%;}
 
-from{
-
-width:0%;
-
-}
-
-
-to{
-
-width:100%;
+100%{width:100%;}
 
 }
 
 
-}
-
-
-
-@keyframes pulse{
-
+@keyframes flutuar{
 
 50%{
 
-opacity:.5;
+transform:translateY(-8px);
 
 }
 
-
 }
-
-
 
 </style>
 
 </head>
 
-
-
 <body>
 
 
+<div class="container">
 
-<div class="cartucho">
+<h1>SUPER MARIO WORLD</h1>
 
-
-<div class="logo">
-
-RETROTAG NFC
-
-</div>
-
-
-
-<h1>
-
-🍄 SUPER MARIO WORLD
-
-</h1>
-
-
-
-<img 
-class="capa"
-src="mario.webp"
->
-
-
+<img src="mario.webp" class="capa">
 
 <div class="estrelas">
-
 ★★★★★
-
 </div>
 
+<button class="botao" onclick="iniciarJogo()">
 
-
-<div class="snes">
-
-SUPER NINTENDO<br>
-
-1990
-
-</div>
-
-
-
-<button onclick="jogar()">
-
-🟨 JOGAR AGORA
+▶ JOGAR AGORA
 
 </button>
 
-
-
 <div class="info">
 
-📱 Compatível Android<br>
+📱 Compatível com Android e iPhone
 
-🍎 Compatível iPhone<br>
+<br><br>
 
-🎮 Controles na tela
-
-</div>
-
-
+🔄 Gire o celular para jogar
 
 </div>
 
+</div>
 
-
-
-
-<!-- CARREGAMENTO -->
 
 
 <div id="loading">
 
+<div class="cartucho">
 
-<div class="loading-box">
+🎮
 
+</div>
 
-RETROTAG NFC
+<div class="loading-text">
 
+SUPER MARIO WORLD
 
-<br><br>
+</div>
 
+<div class="sub">
 
-INSERTING CARTRIDGE...
+Inserindo cartucho...
 
-
-<br><br>
-
-
-🍄 SUPER MARIO WORLD
-
+</div>
 
 <div class="barra">
 
@@ -415,48 +306,44 @@ INSERTING CARTRIDGE...
 
 </div>
 
-
-<br>
-
-
-LOADING...
-
-
 </div>
-
-
-</div>
-
-
 
 
 
 <script>
 
-
-function jogar(){
-
+async function iniciarJogo(){
 
 document.getElementById("loading").style.display="flex";
+
+const el=document.documentElement;
+
+try{
+
+if(el.requestFullscreen){
+
+await el.requestFullscreen();
+
+}else if(el.webkitRequestFullscreen){
+
+el.webkitRequestFullscreen();
+
+}
+
+}catch(e){}
 
 
 setTimeout(function(){
 
-
 window.location.href="emulador.html";
 
-
-},3000);
-
-
+},2200);
 
 }
 
-
 </script>
-
-
 
 </body>
 
 </html>
+```
