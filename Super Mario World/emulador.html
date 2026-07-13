@@ -9,7 +9,6 @@
 
 <title>Super Mario World - RetroTag NFC</title>
 
-
 <style>
 
 html,body{
@@ -26,7 +25,6 @@ overflow:hidden;
 
 }
 
-
 #game{
 
 width:100%;
@@ -34,9 +32,7 @@ height:100%;
 
 }
 
-
 </style>
-
 
 </head>
 
@@ -47,62 +43,44 @@ height:100%;
 <div id="game"></div>
 
 
-
 <script>
 
-
-// Área do emulador
 
 EJS_player = "#game";
 
 
-// Console
-
 EJS_core = "snes";
 
-
-// Jogo
 
 EJS_gameUrl = "rom/super-mario-world.smc";
 
 
-// Nome
-
 EJS_gameName = "Super Mario World";
 
-
-// Arquivos EmulatorJS
 
 EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
 
-// Carrega automaticamente
+// Configuração mobile
 
 EJS_startOnLoaded = true;
 
-
-// Mais leve para celulares
-
 EJS_threads = false;
 
-EJS_gamePatch = false;
+EJS_disableDatabases = true;
 
-EJS_volume = 0.8;
+EJS_disableAutoLoad = true;
+
+EJS_disableAutoSave = true;
 
 
-// Controles virtuais
+// reduz consumo
+
+EJS_volume = 0.6;
+
 
 EJS_VirtualGamepad = true;
 
-
-// Fundo
-
-EJS_color = "#000";
-
-
-// Não força tela cheia no carregamento
-
-// melhora compatibilidade mobile
 
 EJS_fullscreenOnLoad = false;
 
@@ -110,9 +88,7 @@ EJS_fullscreenOnLoad = false;
 </script>
 
 
-
 <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
-
 
 
 </body>
