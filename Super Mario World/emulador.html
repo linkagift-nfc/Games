@@ -28,6 +28,7 @@ height:100%;
 
 </head>
 
+
 <body>
 
 <div id="game"></div>
@@ -37,7 +38,7 @@ height:100%;
 
 EJS_player = "#game";
 
-EJS_core = "snes9x";
+EJS_core = "snes";
 
 EJS_gameUrl = "rom/super-mario-world.smc";
 
@@ -45,20 +46,27 @@ EJS_gameName = "Super Mario World";
 
 EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
+
+// desempenho mobile
+
 EJS_startOnLoaded = true;
 
 EJS_VirtualGamepad = true;
 
-EJS_volume = 0.7;
+EJS_volume = 0.5;
 
-EJS_fullscreenOnLoad = false;
+
+// desativa recursos pesados
+
+EJS_disableAutoSave = true;
+
+EJS_disableAutoLoad = true;
 
 
 </script>
 
 
 <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
-
 
 </body>
 
