@@ -13,6 +13,7 @@
 
 <style>
 
+
 html, body {
 
     margin:0;
@@ -28,12 +29,67 @@ html, body {
 }
 
 
+
 #game {
 
     width:100%;
     height:100%;
 
 }
+
+
+
+/* BOTÃO TELA CHEIA */
+
+#fullscreenBtn{
+
+    position:fixed;
+
+    top:15px;
+
+    right:15px;
+
+
+    z-index:9999;
+
+
+    padding:12px 18px;
+
+
+    font-size:16px;
+
+
+    font-weight:bold;
+
+
+    border:none;
+
+
+    border-radius:10px;
+
+
+    background:#f5b400;
+
+
+    color:#222;
+
+
+    cursor:pointer;
+
+
+    box-shadow:
+    0 4px 8px rgba(0,0,0,.5);
+
+}
+
+
+
+#fullscreenBtn:active{
+
+    transform:scale(.95);
+
+}
+
 
 
 </style>
@@ -45,7 +101,18 @@ html, body {
 <body>
 
 
+
 <div id="game"></div>
+
+
+
+<button id="fullscreenBtn" onclick="abrirTelaCheia()">
+
+⛶ TELA CHEIA
+
+</button>
+
+
 
 
 
@@ -77,12 +144,12 @@ EJS_gameName = "Super Mario World";
 EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
 
-// Iniciar automaticamente
+// Inicia automaticamente
 
 EJS_startOnLoaded = true;
 
 
-// Controle virtual celular
+// Controle virtual
 
 EJS_VirtualGamepad = true;
 
@@ -90,6 +157,7 @@ EJS_VirtualGamepad = true;
 // Volume
 
 EJS_volume = 0.5;
+
 
 
 // Desempenho
@@ -106,9 +174,43 @@ EJS_disableAutoLoad = true;
 EJS_color = "#000";
 
 
-// Tenta abrir tela cheia
+// Não força sozinho (melhor compatibilidade)
 
-EJS_fullscreenOnLoad = true;
+EJS_fullscreenOnLoad = false;
+
+
+
+
+// FUNÇÃO TELA CHEIA
+
+function abrirTelaCheia(){
+
+
+let elem = document.documentElement;
+
+
+
+if(elem.requestFullscreen){
+
+    elem.requestFullscreen();
+
+}
+
+else if(elem.webkitRequestFullscreen){
+
+    elem.webkitRequestFullscreen();
+
+}
+
+else if(elem.msRequestFullscreen){
+
+    elem.msRequestFullscreen();
+
+}
+
+
+}
+
 
 
 
@@ -121,5 +223,6 @@ EJS_fullscreenOnLoad = true;
 
 
 </body>
+
 
 </html>
