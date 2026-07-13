@@ -7,8 +7,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Cor da barra do navegador no Android -->
-<meta name="theme-color" content="#7b2cbf">
+<!-- Barra do navegador preta -->
+<meta name="theme-color" content="#000000">
 
 
 <title>RetroTag NFC - Super Mario World</title>
@@ -166,12 +166,12 @@ EJS_gameName = "Super Mario World";
 EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
 
-// Inicialização
+// Iniciar automaticamente
 
 EJS_startOnLoaded = true;
 
 
-// Controle virtual
+// Controles virtuais
 
 EJS_VirtualGamepad = true;
 
@@ -182,13 +182,14 @@ EJS_volume = 0.5;
 
 
 
-// Melhor desempenho
+// Desempenho
 
 EJS_disableDatabases = true;
 
 EJS_disableAutoSave = true;
 
 EJS_disableAutoLoad = true;
+
 
 
 // Fundo
@@ -213,8 +214,7 @@ EJS_color = "#000";
 function abrirTelaCheia(){
 
 
-
-// ENTRAR EM TELA CHEIA
+// ENTRA
 
 if(!document.fullscreenElement){
 
@@ -252,7 +252,7 @@ tela.msRequestFullscreen();
 }
 
 
-// SAIR DA TELA CHEIA
+// SAI
 
 else{
 
