@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RetroTag NFC</title>
+<title>RetroTag NFC - Super Mario World</title>
 
 
 <style>
@@ -27,6 +27,7 @@ background:#000;
 }
 
 
+
 #game{
 
 width:100%;
@@ -35,15 +36,16 @@ height:100%;
 }
 
 
-/* CAMADA DO BOTÃO */
+
+/* BOTÃO PEQUENO TELA CHEIA */
 
 #menu{
 
 position:fixed;
 
-top:20px;
+top:12px;
 
-right:20px;
+right:12px;
 
 z-index:999999999;
 
@@ -53,25 +55,55 @@ z-index:999999999;
 
 #fullscreenBtn{
 
+
 background:#f5b400;
+
 
 color:#222;
 
+
 border:none;
 
-border-radius:10px;
 
-padding:12px 18px;
+border-radius:8px;
+
+
+width:38px;
+
+height:32px;
+
+
 
 font-size:18px;
 
+
 font-weight:bold;
+
 
 cursor:pointer;
 
-box-shadow:0 5px 10px #000;
+
+
+box-shadow:
+
+0 3px 6px rgba(0,0,0,.7);
+
+
+
+opacity:0.85;
+
+
 
 }
+
+
+
+#fullscreenBtn:active{
+
+transform:scale(.90);
+
+}
+
 
 
 </style>
@@ -92,7 +124,7 @@ box-shadow:0 5px 10px #000;
 
 <button id="fullscreenBtn" onclick="abrirTelaCheia()">
 
-⛶ TELA CHEIA
+⛶
 
 </button>
 
@@ -105,30 +137,48 @@ box-shadow:0 5px 10px #000;
 <script>
 
 
+// Área do emulador
+
 EJS_player = "#game";
 
+
+// Sistema
 
 EJS_core = "snes";
 
 
+// ROM
+
 EJS_gameUrl = "rom/super-mario-world.smc";
 
+
+// Nome
 
 EJS_gameName = "Super Mario World";
 
 
+// Arquivos EmulatorJS
+
 EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
 
+// Inicialização
 
 EJS_startOnLoaded = true;
 
 
+// Controles virtuais
+
 EJS_VirtualGamepad = true;
 
 
+// Volume
+
 EJS_volume = 0.5;
 
+
+
+// Desempenho
 
 EJS_disableDatabases = true;
 
@@ -137,7 +187,11 @@ EJS_disableAutoSave = true;
 EJS_disableAutoLoad = true;
 
 
+
+// Fundo
+
 EJS_color = "#000";
+
 
 
 </script>
@@ -149,32 +203,84 @@ EJS_color = "#000";
 
 
 
+
 <script>
 
 
 function abrirTelaCheia(){
 
 
+
+// ENTRA
+
+if(!document.fullscreenElement){
+
+
 let tela = document.documentElement;
+
 
 
 if(tela.requestFullscreen){
 
+
 tela.requestFullscreen();
+
 
 }
 
 else if(tela.webkitRequestFullscreen){
 
+
 tela.webkitRequestFullscreen();
+
 
 }
 
 else if(tela.msRequestFullscreen){
 
+
 tela.msRequestFullscreen();
 
+
 }
+
+
+
+}
+
+
+// SAI
+
+else{
+
+
+if(document.exitFullscreen){
+
+
+document.exitFullscreen();
+
+
+}
+
+else if(document.webkitExitFullscreen){
+
+
+document.webkitExitFullscreen();
+
+
+}
+
+else if(document.msExitFullscreen){
+
+
+document.msExitFullscreen();
+
+
+}
+
+
+}
+
 
 
 }
