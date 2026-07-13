@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RetroTag NFC - Top Gear</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:
+    linear-gradient(#777,#444);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+.cartucho{
+
+    width:90%;
+    max-width:420px;
+
+    background:#c7c7c7;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:
+    0 15px 30px #000;
+
+    text-align:center;
+
+    border:8px solid #999;
+
+}
+
+
+.logo{
+
+    font-size:20px;
+    font-weight:bold;
+
+    letter-spacing:4px;
+
+    color:#333;
+
+}
+
+
+h1{
+
+    margin:15px 0;
+
+    color:#222;
+
+}
+
+
+.capa{
+
+    width:80%;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 8px 15px #333;
+
+}
+
+
+.estrelas{
+
+    color:#7b1fa2;
+
+    font-size:22px;
+
+    margin:15px;
+
+}
+
+
+.snes{
+
+    font-weight:bold;
+
+    color:#333;
+
+}
+
+
+
+button{
+
+    margin-top:20px;
+
+    width:90%;
+
+    padding:18px;
+
+
+    background:#6a1b9a;
+
+    color:white;
+
+
+    border:none;
+
+    border-radius:12px;
+
+
+    font-size:22px;
+
+    font-weight:bold;
+
+
+    cursor:pointer;
+
+
+    box-shadow:
+    0 8px 0 #3d1058;
+
+
+}
+
+
+
+button:active{
+
+    transform:translateY(8px);
+
+    box-shadow:none;
+
+}
+
+
+
+.info{
+
+    margin-top:25px;
+
+    border-top:2px solid #999;
+
+    padding-top:15px;
+
+    color:#333;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="cartucho">
+
+
+<div class="logo">
+RETROTAG NFC
+</div>
+
+
+<h1>
+🏎️ TOP GEAR
+</h1>
+
+
+<img class="capa" src="capa.jpg">
+
+
+<div class="estrelas">
+★★★★★
+</div>
+
+
+<div class="snes">
+SUPER NINTENDO
+</div>
+
+
+<button onclick="jogar()">
+▶ JOGAR AGORA
+</button>
+
+
+<div class="info">
+
+📱 Compatível com Android<br>
+
+🍎 Compatível com iPhone<br>
+
+🎮 Controles na tela
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+function jogar(){
+
+alert("Inserindo cartucho digital...");
+
+}
+
+</script>
+
+
+</body>
+
+</html>
