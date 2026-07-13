@@ -34,6 +34,7 @@ linear-gradient(
 }
 
 
+/* CARTUCHO */
 
 .cartucho{
 
@@ -177,36 +178,175 @@ line-height:1.8;
 }
 
 
+
+/* TELA DE CARREGAMENTO */
+
+
+#loading{
+
+display:none;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+
+background:#111;
+
+
+color:white;
+
+
+align-items:center;
+
+justify-content:center;
+
+
+text-align:center;
+
+
+font-size:22px;
+
+
+z-index:999;
+
+
+}
+
+
+.loading-box{
+
+
+animation:pulse 1.5s infinite;
+
+
+}
+
+
+.barra{
+
+
+margin-top:20px;
+
+width:220px;
+
+height:15px;
+
+
+background:#333;
+
+
+border-radius:20px;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+.progresso{
+
+
+height:100%;
+
+width:100%;
+
+
+background:#f5b400;
+
+
+animation:carregar 3s linear;
+
+
+}
+
+
+
+@keyframes carregar{
+
+
+from{
+
+width:0%;
+
+}
+
+
+to{
+
+width:100%;
+
+}
+
+
+}
+
+
+
+@keyframes pulse{
+
+
+50%{
+
+opacity:.5;
+
+}
+
+
+}
+
+
+
 </style>
 
 </head>
 
 
+
 <body>
+
 
 
 <div class="cartucho">
 
 
 <div class="logo">
+
 RETROTAG NFC
+
 </div>
 
 
+
 <h1>
+
 🍄 SUPER MARIO WORLD
+
 </h1>
+
 
 
 <img 
 class="capa"
-src="mario.webp"
+src="capa.jpg"
 >
 
 
+
 <div class="estrelas">
+
 ★★★★★
+
 </div>
+
 
 
 <div class="snes">
@@ -243,15 +383,78 @@ SUPER NINTENDO<br>
 
 
 
+
+
+<!-- CARREGAMENTO -->
+
+
+<div id="loading">
+
+
+<div class="loading-box">
+
+
+RETROTAG NFC
+
+
+<br><br>
+
+
+INSERTING CARTRIDGE...
+
+
+<br><br>
+
+
+🍄 SUPER MARIO WORLD
+
+
+<div class="barra">
+
+<div class="progresso"></div>
+
+</div>
+
+
+<br>
+
+
+LOADING...
+
+
+</div>
+
+
+</div>
+
+
+
+
+
 <script>
+
 
 function jogar(){
 
-alert("🍄 Inserindo cartucho digital...");
+
+document.getElementById("loading").style.display="flex";
+
+
+setTimeout(function(){
+
+
+window.location.href="emulador.html";
+
+
+},3000);
+
+
 
 }
 
+
 </script>
+
 
 
 </body>
