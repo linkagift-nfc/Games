@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Barra do navegador preta -->
+<meta name="theme-color" content="#000000">
+
+
+<title>RetroTag NFC - Top Gear</title>
+
+
+<style>
+
+html,body{
+
+margin:0;
+padding:0;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+background:#000;
+
+}
+
+
+
+#game{
+
+width:100%;
+height:100%;
+
+}
+
+
+
+/* BOTÃO PEQUENO DE TELA CHEIA */
+
+#menu{
+
+position:fixed;
+
+top:12px;
+
+left:12px;
+
+z-index:999999999;
+
+}
+
+
+
+#fullscreenBtn{
+
+
+background:#f5b400;
+
+
+color:#222;
+
+
+border:none;
+
+
+border-radius:8px;
+
+
+width:38px;
+
+height:32px;
+
+
+
+font-size:18px;
+
+
+font-weight:bold;
+
+
+cursor:pointer;
+
+
+
+box-shadow:
+
+0 3px 6px rgba(0,0,0,.7);
+
+
+
+opacity:0.85;
+
+
+
+}
+
+
+
+#fullscreenBtn:active{
+
+transform:scale(.90);
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<div id="game"></div>
+
+
+
+<div id="menu">
+
+<button id="fullscreenBtn" onclick="abrirTelaCheia()">
+
+⛶
+
+</button>
+
+</div>
+
+
+
+
+
+<script>
+
+
+// Área do emulador
+
+EJS_player = "#game";
+
+
+// Console
+
+EJS_core = "snes";
+
+
+// ROM
+
+EJS_gameUrl = "rom/top-gear.sfc";
+
+
+// Nome do jogo
+
+EJS_gameName = "Top Gear";
+
+
+// Arquivos EmulatorJS
+
+EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+
+
+// Iniciar automaticamente
+
+EJS_startOnLoaded = true;
+
+
+// Controles virtuais
+
+EJS_VirtualGamepad = true;
+
+
+// Volume
+
+EJS_volume = 0.5;
+
+
+
+// Desempenho
+
+EJS_disableDatabases = true;
+
+EJS_disableAutoSave = true;
+
+EJS_disableAutoLoad = true;
+
+
+
+// Fundo
+
+EJS_color = "#000";
+
+
+
+</script>
+
+
+
+<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
+
+
+
+
+<script>
+
+
+function abrirTelaCheia(){
+
+
+// ENTRA
+
+if(!document.fullscreenElement){
+
+
+let tela = document.documentElement;
+
+
+
+if(tela.requestFullscreen){
+
+
+tela.requestFullscreen();
+
+
+}
+
+else if(tela.webkitRequestFullscreen){
+
+
+tela.webkitRequestFullscreen();
+
+
+}
+
+else if(tela.msRequestFullscreen){
+
+
+tela.msRequestFullscreen();
+
+
+}
+
+
+
+}
+
+
+// SAI
+
+else{
+
+
+if(document.exitFullscreen){
+
+
+document.exitFullscreen();
+
+
+}
+
+else if(document.webkitExitFullscreen){
+
+
+document.webkitExitFullscreen();
+
+
+}
+
+else if(document.msExitFullscreen){
+
+
+document.msExitFullscreen();
+
+
+}
+
+
+}
+
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
