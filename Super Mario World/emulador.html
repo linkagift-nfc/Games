@@ -1,112 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Super Mario World - RetroTag NFC</title>
-
+<title>Super Mario World</title>
 
 <style>
-
-html,body{
-
-margin:0;
-padding:0;
-
-width:100%;
-height:100%;
-
-background:#000;
-
-overflow:hidden;
-
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
 }
 
-
-#game{
-
-width:100%;
-height:100%;
-
+#game {
+    width: 100%;
+    height: 100%;
 }
-
 </style>
-
-
 </head>
-
 
 <body>
 
-
 <div id="game"></div>
 
-
-
 <script>
-
-
-// Tela do emulador
-
 EJS_player = "#game";
 
-
-// Console
-
+// Sistema
 EJS_core = "snes";
 
-
 // ROM
-
 EJS_gameUrl = "rom/super-mario-world.smc";
 
-
-// Nome do jogo
-
+// Nome
 EJS_gameName = "Super Mario World";
 
+// EmulatorJS Oficial
+EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
-// Agora usa o EmulatorJS do seu GitHub
-
-EJS_pathtodata = "../emulator/data/";
-
-
-// Inicialização automática
-
+// Configurações
 EJS_startOnLoaded = true;
-
-
-// Controles virtuais
-
 EJS_VirtualGamepad = true;
-
-
-// Volume
-
 EJS_volume = 0.5;
 
-
-// Melhor compatibilidade mobile
-
-EJS_disableAutoSave = true;
-
-EJS_disableAutoLoad = true;
-
+// Melhora um pouco o desempenho
 EJS_disableDatabases = true;
-
-
+EJS_disableAutoSave = true;
+EJS_disableAutoLoad = true;
 </script>
 
-
-
-<script src="../emulator/data/loader.js"></script>
-
-
+<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 
 </body>
-
 </html>
