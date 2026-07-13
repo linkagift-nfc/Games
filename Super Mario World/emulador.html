@@ -7,7 +7,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>RetroTag NFC - Super Mario World</title>
 
 
@@ -39,18 +38,21 @@ html, body {
 
 
 
-/* BOTÃO TELA CHEIA */
+/* BOTÃO DE TELA CHEIA */
 
 #fullscreenBtn{
 
+
     position:fixed;
+
 
     top:15px;
 
     right:15px;
 
 
-    z-index:9999;
+    z-index:999999;
+
 
 
     padding:12px 18px;
@@ -62,10 +64,12 @@ html, body {
     font-weight:bold;
 
 
+
     border:none;
 
 
     border-radius:10px;
+
 
 
     background:#f5b400;
@@ -74,11 +78,16 @@ html, body {
     color:#222;
 
 
+
+    box-shadow:
+
+    0 4px 10px rgba(0,0,0,.6);
+
+
+
     cursor:pointer;
 
 
-    box-shadow:
-    0 4px 8px rgba(0,0,0,.5);
 
 }
 
@@ -86,7 +95,9 @@ html, body {
 
 #fullscreenBtn:active{
 
+
     transform:scale(.95);
+
 
 }
 
@@ -106,6 +117,86 @@ html, body {
 
 
 
+
+
+<script>
+
+
+// Área do emulador
+
+EJS_player = "#game";
+
+
+// Sistema
+
+EJS_core = "snes";
+
+
+// ROM
+
+EJS_gameUrl = "rom/super-mario-world.smc";
+
+
+// Nome
+
+EJS_gameName = "Super Mario World";
+
+
+// Arquivos EmulatorJS
+
+EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+
+
+// Inicialização
+
+EJS_startOnLoaded = true;
+
+
+// Controle virtual celular
+
+EJS_VirtualGamepad = true;
+
+
+// Volume
+
+EJS_volume = 0.5;
+
+
+
+// Melhor desempenho
+
+EJS_disableDatabases = true;
+
+EJS_disableAutoSave = true;
+
+EJS_disableAutoLoad = true;
+
+
+
+// Fundo
+
+EJS_color = "#000";
+
+
+
+// Não abre sozinho
+
+EJS_fullscreenOnLoad = false;
+
+
+
+</script>
+
+
+
+<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
+
+
+
+
+<!-- BOTÃO FICA NO FINAL PARA FICAR ACIMA DO EMULADOR -->
+
 <button id="fullscreenBtn" onclick="abrirTelaCheia()">
 
 ⛶ TELA CHEIA
@@ -119,98 +210,40 @@ html, body {
 <script>
 
 
-// Área do emulador
-
-EJS_player = "#game";
-
-
-// Console
-
-EJS_core = "snes";
-
-
-// ROM
-
-EJS_gameUrl = "rom/super-mario-world.smc";
-
-
-// Nome do jogo
-
-EJS_gameName = "Super Mario World";
-
-
-// Arquivos EmulatorJS
-
-EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
-
-
-// Inicia automaticamente
-
-EJS_startOnLoaded = true;
-
-
-// Controle virtual
-
-EJS_VirtualGamepad = true;
-
-
-// Volume
-
-EJS_volume = 0.5;
-
-
-
-// Desempenho
-
-EJS_disableDatabases = true;
-
-EJS_disableAutoSave = true;
-
-EJS_disableAutoLoad = true;
-
-
-// Fundo
-
-EJS_color = "#000";
-
-
-// Não força sozinho (melhor compatibilidade)
-
-EJS_fullscreenOnLoad = false;
-
-
-
-
-// FUNÇÃO TELA CHEIA
-
 function abrirTelaCheia(){
 
 
-let elem = document.documentElement;
+let elemento = document.documentElement;
 
 
 
-if(elem.requestFullscreen){
+if(elemento.requestFullscreen){
 
-    elem.requestFullscreen();
 
-}
-
-else if(elem.webkitRequestFullscreen){
-
-    elem.webkitRequestFullscreen();
-
-}
-
-else if(elem.msRequestFullscreen){
-
-    elem.msRequestFullscreen();
-
-}
+    elemento.requestFullscreen();
 
 
 }
 
+else if(elemento.webkitRequestFullscreen){
+
+
+    elemento.webkitRequestFullscreen();
+
+
+}
+
+else if(elemento.msRequestFullscreen){
+
+
+    elemento.msRequestFullscreen();
+
+
+}
+
+
+
+}
 
 
 
@@ -218,11 +251,6 @@ else if(elem.msRequestFullscreen){
 
 
 
-<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
-
-
-
 </body>
-
 
 </html>
