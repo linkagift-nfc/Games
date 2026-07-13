@@ -12,7 +12,7 @@
 
 <style>
 
-html, body {
+html,body{
 
 margin:0;
 padding:0;
@@ -27,12 +27,13 @@ overflow:hidden;
 }
 
 
-#game {
+#game{
 
 width:100%;
 height:100%;
 
 }
+
 
 </style>
 
@@ -55,29 +56,55 @@ height:100%;
 EJS_player = "#game";
 
 
-// Sistema Super Nintendo
+// Console
 
 EJS_core = "snes";
 
 
-// ROM do jogo
+// Jogo
 
 EJS_gameUrl = "rom/super-mario-world.smc";
 
 
-// Arquivos do EmulatorJS
+// Nome
+
+EJS_gameName = "Super Mario World";
+
+
+// Arquivos EmulatorJS
 
 EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
 
-// Inicia automaticamente
+// Carrega automaticamente
 
 EJS_startOnLoaded = true;
 
 
-// Tenta abrir tela cheia
+// Mais leve para celulares
 
-EJS_fullscreenOnLoad = true;
+EJS_threads = false;
+
+EJS_gamePatch = false;
+
+EJS_volume = 0.8;
+
+
+// Controles virtuais
+
+EJS_VirtualGamepad = true;
+
+
+// Fundo
+
+EJS_color = "#000";
+
+
+// Não força tela cheia no carregamento
+
+// melhora compatibilidade mobile
+
+EJS_fullscreenOnLoad = false;
 
 
 </script>
