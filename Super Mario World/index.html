@@ -1,359 +1,162 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>Super Mario World</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Super Mario World - RetroTag NFC</title>
+
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+html,body{
 
-body{
+margin:0;
+padding:0;
 
-    background:linear-gradient(180deg,#d8d8d8,#bdbdbd);
+width:100%;
+height:100%;
 
-    font-family:Arial,Helvetica,sans-serif;
+background:#000;
 
-    height:100vh;
+overflow:hidden;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    overflow:hidden;
+font-family:Arial, sans-serif;
 
 }
 
-.container{
 
-    width:92%;
-    max-width:420px;
+/* Área da logo */
 
-    background:#efefef;
+#header{
 
-    border-radius:28px;
+height:55px;
 
-    padding:30px;
+background:#1b4fa3;
 
-    text-align:center;
+display:flex;
 
-    border:4px solid #9c9c9c;
+align-items:center;
 
-    box-shadow:0 18px 40px rgba(0,0,0,.35);
+justify-content:center;
 
 }
 
-/* LOGO */
 
-.logo{
+/* Logo pequena */
 
-    width:95px;
+#logo{
 
-    margin-bottom:18px;
+height:40px;
 
-    filter:drop-shadow(0 4px 8px rgba(0,0,0,.25));
+max-width:200px;
 
-}
-
-h1{
-
-    color:#4d2ea0;
-
-    font-size:34px;
-
-    margin-bottom:20px;
+object-fit:contain;
 
 }
 
-.capa{
 
-    width:100%;
 
-    border-radius:18px;
+/* Área do jogo */
 
-    margin-bottom:20px;
+#game{
 
-    box-shadow:0 8px 20px rgba(0,0,0,.35);
+width:100%;
 
-}
-
-.estrelas{
-
-    font-size:24px;
-
-    color:#FFD700;
-
-    margin-bottom:25px;
+height:calc(100% - 55px);
 
 }
 
-.botao{
 
-    width:100%;
-
-    padding:18px;
-
-    border:none;
-
-    border-radius:16px;
-
-    background:#6b33c4;
-
-    color:white;
-
-    font-size:22px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-.botao:hover{
-
-    background:#5520ad;
-
-    transform:scale(1.03);
-
-}
-
-.info{
-
-    margin-top:25px;
-
-    color:#555;
-
-    line-height:1.7;
-
-    font-size:16px;
-
-}
-
-/* LOADING */
-
-#loading{
-
-    display:none;
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    background:#111;
-
-    color:white;
-
-    justify-content:center;
-
-    align-items:center;
-
-    flex-direction:column;
-
-    z-index:9999;
-
-}
-
-.cartucho{
-
-    font-size:50px;
-
-    margin-bottom:20px;
-
-    animation:flutuar 1s infinite;
-
-}
-
-.loading-logo{
-
-    width:90px;
-
-    margin-bottom:20px;
-
-}
-
-.loading-title{
-
-    font-size:28px;
-
-    font-weight:bold;
-
-    margin-bottom:10px;
-
-}
-
-.loading-sub{
-
-    font-size:18px;
-
-    color:#cccccc;
-
-    margin-bottom:35px;
-
-}
-
-.barra{
-
-    width:280px;
-
-    height:10px;
-
-    background:#333;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-}
-
-.progresso{
-
-    width:0;
-
-    height:100%;
-
-    background:#6b33c4;
-
-    animation:carregar 2.2s linear forwards;
-
-}
-
-@keyframes carregar{
-
-0%{width:0;}
-
-100%{width:100%;}
-
-}
-
-@keyframes flutuar{
-
-50%{
-
-transform:translateY(-8px);
-
-}
-
-}
 
 </style>
 
+
 </head>
+
 
 <body>
 
-<div class="container">
 
-<img src="logo.png" class="logo" alt="LINKA Gift">
+<div id="header">
 
-<h1>SUPER MARIO WORLD</h1>
-
-<img src="mario.webp" class="capa" alt="Super Mario World">
-
-<div class="estrelas">
-
-★★★★★
-
-</div>
-
-<button class="botao" onclick="iniciarJogo()">
-
-▶ JOGAR AGORA
-
-</button>
-
-<div class="info">
-
-📱 Compatível com Android e iPhone
-
-<br><br>
-
-🔄 Gire o celular para jogar
-
-</div>
+<img id="logo" src="logo.png" alt="RetroTag NFC">
 
 </div>
 
 
-<div id="loading">
 
-<img src="logo.png" class="loading-logo" alt="LINKA Gift">
+<div id="game"></div>
 
-<div class="cartucho">
 
-🎮
-
-</div>
-
-<div class="loading-title">
-
-SUPER MARIO WORLD
-
-</div>
-
-<div class="loading-sub">
-
-Inserindo cartucho...
-
-</div>
-
-<div class="barra">
-
-<div class="progresso"></div>
-
-</div>
-
-</div>
 
 <script>
 
-async function iniciarJogo(){
 
-    document.getElementById("loading").style.display="flex";
+// Área do emulador
 
-    const tela=document.documentElement;
+EJS_player = "#game";
 
-    try{
 
-        if(tela.requestFullscreen){
+// Console
 
-            await tela.requestFullscreen();
+EJS_core = "snes";
 
-        }else if(tela.webkitRequestFullscreen){
 
-            tela.webkitRequestFullscreen();
+// Jogo
 
-        }
+EJS_gameUrl = "rom/super-mario-world.smc";
 
-    }catch(e){}
 
-    setTimeout(function(){
+// Nome
 
-        window.location.href="emulador.html";
+EJS_gameName = "Super Mario World";
 
-    },2200);
 
-}
+// Arquivos EmulatorJS
+
+EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+
+
+// Inicia automaticamente
+
+EJS_startOnLoaded = true;
+
+
+// Configurações
+
+EJS_threads = false;
+
+EJS_gamePatch = false;
+
+EJS_volume = 0.8;
+
+
+// Controle virtual
+
+EJS_VirtualGamepad = true;
+
+
+// Fundo
+
+EJS_color = "#000";
+
+
+// Não abrir fullscreen automaticamente
+
+EJS_fullscreenOnLoad = false;
+
 
 </script>
+
+
+
+<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
 
 </body>
 
 </html>
-```
