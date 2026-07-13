@@ -7,6 +7,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Cor da barra do navegador no Android -->
+<meta name="theme-color" content="#7b2cbf">
+
+
 <title>RetroTag NFC - Super Mario World</title>
 
 
@@ -55,29 +59,44 @@ z-index:999999999;
 
 #fullscreenBtn{
 
+
 background:#f5b400;
+
 
 color:#222;
 
+
 border:none;
 
+
 border-radius:8px;
+
 
 width:38px;
 
 height:32px;
 
+
+
 font-size:18px;
+
 
 font-weight:bold;
 
+
 cursor:pointer;
+
+
 
 box-shadow:
 
 0 3px 6px rgba(0,0,0,.7);
 
+
+
 opacity:0.85;
+
+
 
 }
 
@@ -127,7 +146,7 @@ transform:scale(.90);
 EJS_player = "#game";
 
 
-// Sistema
+// Console
 
 EJS_core = "snes";
 
@@ -137,7 +156,7 @@ EJS_core = "snes";
 EJS_gameUrl = "rom/super-mario-world.smc";
 
 
-// Nome
+// Nome do jogo
 
 EJS_gameName = "Super Mario World";
 
@@ -160,6 +179,7 @@ EJS_VirtualGamepad = true;
 // Volume
 
 EJS_volume = 0.5;
+
 
 
 // Melhor desempenho
@@ -193,7 +213,8 @@ EJS_color = "#000";
 function abrirTelaCheia(){
 
 
-// ENTRAR
+
+// ENTRAR EM TELA CHEIA
 
 if(!document.fullscreenElement){
 
@@ -231,7 +252,7 @@ tela.msRequestFullscreen();
 }
 
 
-// SAIR
+// SAIR DA TELA CHEIA
 
 else{
 
