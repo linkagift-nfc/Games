@@ -7,100 +7,71 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RetroTag NFC - Super Mario World</title>
+<title>RetroTag NFC</title>
 
 
 <style>
 
+html,body{
 
-html, body {
+margin:0;
+padding:0;
 
-    margin:0;
-    padding:0;
+width:100%;
+height:100%;
 
-    width:100%;
-    height:100%;
+overflow:hidden;
 
-    overflow:hidden;
-
-    background:#000;
-
-}
-
-
-
-#game {
-
-    width:100%;
-    height:100%;
+background:#000;
 
 }
 
 
+#game{
 
-/* BOTÃO DE TELA CHEIA */
+width:100%;
+height:100%;
+
+}
+
+
+/* CAMADA DO BOTÃO */
+
+#menu{
+
+position:fixed;
+
+top:20px;
+
+right:20px;
+
+z-index:999999999;
+
+}
+
+
 
 #fullscreenBtn{
 
+background:#f5b400;
 
-    position:fixed;
+color:#222;
 
+border:none;
 
-    top:15px;
+border-radius:10px;
 
-    right:15px;
+padding:12px 18px;
 
+font-size:18px;
 
-    z-index:999999;
+font-weight:bold;
 
+cursor:pointer;
 
-
-    padding:12px 18px;
-
-
-    font-size:16px;
-
-
-    font-weight:bold;
-
-
-
-    border:none;
-
-
-    border-radius:10px;
-
-
-
-    background:#f5b400;
-
-
-    color:#222;
-
-
-
-    box-shadow:
-
-    0 4px 10px rgba(0,0,0,.6);
-
-
-
-    cursor:pointer;
-
-
+box-shadow:0 5px 10px #000;
 
 }
-
-
-
-#fullscreenBtn:active{
-
-
-    transform:scale(.95);
-
-
-}
-
 
 
 </style>
@@ -117,53 +88,47 @@ html, body {
 
 
 
+<div id="menu">
+
+<button id="fullscreenBtn" onclick="abrirTelaCheia()">
+
+⛶ TELA CHEIA
+
+</button>
+
+</div>
+
+
+
 
 
 <script>
 
 
-// Área do emulador
-
 EJS_player = "#game";
 
-
-// Sistema
 
 EJS_core = "snes";
 
 
-// ROM
-
 EJS_gameUrl = "rom/super-mario-world.smc";
 
-
-// Nome
 
 EJS_gameName = "Super Mario World";
 
 
-// Arquivos EmulatorJS
-
 EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
 
-// Inicialização
 
 EJS_startOnLoaded = true;
 
 
-// Controle virtual celular
-
 EJS_VirtualGamepad = true;
 
 
-// Volume
-
 EJS_volume = 0.5;
 
-
-
-// Melhor desempenho
 
 EJS_disableDatabases = true;
 
@@ -172,17 +137,7 @@ EJS_disableAutoSave = true;
 EJS_disableAutoLoad = true;
 
 
-
-// Fundo
-
 EJS_color = "#000";
-
-
-
-// Não abre sozinho
-
-EJS_fullscreenOnLoad = false;
-
 
 
 </script>
@@ -194,53 +149,32 @@ EJS_fullscreenOnLoad = false;
 
 
 
-
-<!-- BOTÃO FICA NO FINAL PARA FICAR ACIMA DO EMULADOR -->
-
-<button id="fullscreenBtn" onclick="abrirTelaCheia()">
-
-⛶ TELA CHEIA
-
-</button>
-
-
-
-
-
 <script>
 
 
 function abrirTelaCheia(){
 
 
-let elemento = document.documentElement;
+let tela = document.documentElement;
 
 
+if(tela.requestFullscreen){
 
-if(elemento.requestFullscreen){
-
-
-    elemento.requestFullscreen();
-
+tela.requestFullscreen();
 
 }
 
-else if(elemento.webkitRequestFullscreen){
+else if(tela.webkitRequestFullscreen){
 
-
-    elemento.webkitRequestFullscreen();
-
+tela.webkitRequestFullscreen();
 
 }
 
-else if(elemento.msRequestFullscreen){
+else if(tela.msRequestFullscreen){
 
-
-    elemento.msRequestFullscreen();
-
+tela.msRequestFullscreen();
 
 }
-
 
 
 }
