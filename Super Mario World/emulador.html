@@ -28,11 +28,9 @@ height:100%;
 
 </head>
 
-
 <body>
 
 <div id="game"></div>
-
 
 <script>
 
@@ -44,27 +42,34 @@ EJS_gameUrl = "rom/super-mario-world.smc";
 
 EJS_gameName = "Super Mario World";
 
-EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+EJS_pathtodata =
+"https://cdn.emulatorjs.org/stable/data/";
 
 
-// desempenho mobile
+// modo celular
 
 EJS_startOnLoaded = true;
 
 EJS_VirtualGamepad = true;
 
-EJS_volume = 0.5;
 
+// reduz consumo
 
-// desativa recursos pesados
+EJS_volume = 0.3;
 
 EJS_disableAutoSave = true;
 
 EJS_disableAutoLoad = true;
 
+EJS_disableDatabases = true;
+
+
+// sem efeitos pesados
+
+EJS_shader = "disabled";
+
 
 </script>
-
 
 <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 
