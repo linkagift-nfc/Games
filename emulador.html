@@ -8,7 +8,13 @@
 
 <title>RetroTag NFC</title>
 
+
 <style>
+
+*{
+box-sizing:border-box;
+}
+
 
 html,body{
 
@@ -22,18 +28,14 @@ overflow:hidden;
 
 background:#000;
 
-font-family:Arial,sans-serif;
+font-family:"Courier New",monospace;
 
 }
 
 
-#game{
-
-width:100%;
-height:100%;
-
-}
-
+/* =========================
+   TELA BOOT
+========================= */
 
 
 #boot{
@@ -46,9 +48,9 @@ left:0;
 width:100%;
 height:100%;
 
-background:#000;
+background:#050505;
 
-color:white;
+color:#fff;
 
 display:flex;
 
@@ -56,31 +58,18 @@ align-items:center;
 
 justify-content:center;
 
-text-align:center;
-
 z-index:999999;
 
 }
 
 
+.boot-box{
 
-.logo{
+width:90%;
 
-font-size:32px;
+max-width:500px;
 
-font-weight:bold;
-
-color:#f5b400;
-
-margin-bottom:30px;
-
-}
-
-
-
-.texto{
-
-font-size:22px;
+font-size:18px;
 
 line-height:1.8;
 
@@ -88,11 +77,236 @@ line-height:1.8;
 
 
 
-.botao{
+.titulo{
 
-margin-top:30px;
+text-align:center;
 
-padding:18px 45px;
+color:#f5b400;
+
+font-size:28px;
+
+font-weight:bold;
+
+margin-bottom:20px;
+
+}
+
+
+
+.linha{
+
+border-top:2px solid #555;
+
+margin:15px 0;
+
+}
+
+
+
+#mensagens div{
+
+opacity:0;
+
+}
+
+
+
+.ok{
+
+color:#00ff66;
+
+font-weight:bold;
+
+}
+
+
+
+.info{
+
+color:#fff;
+
+}
+
+
+
+#barraArea{
+
+margin-top:20px;
+
+}
+
+
+
+#barra{
+
+width:100%;
+
+height:18px;
+
+border:2px solid #777;
+
+padding:2px;
+
+}
+
+
+
+#progresso{
+
+height:100%;
+
+width:0%;
+
+background:#f5b400;
+
+}
+
+
+
+#porcentagem{
+
+text-align:right;
+
+font-size:14px;
+
+margin-top:5px;
+
+}
+
+
+
+/* =========================
+   TELA CARTUCHO
+========================= */
+
+
+#cartucho{
+
+display:none;
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+
+linear-gradient(
+#42c9ff,
+#8bd34a
+);
+
+
+align-items:center;
+
+justify-content:center;
+
+font-family:Arial,sans-serif;
+
+}
+
+
+
+.card{
+
+width:90%;
+
+max-width:420px;
+
+background:#f5f5f5;
+
+border-radius:22px;
+
+border:8px solid #38a847;
+
+padding:25px;
+
+text-align:center;
+
+box-shadow:
+
+0 15px 35px rgba(0,0,0,.5);
+
+}
+
+
+
+.logo img{
+
+width:170px;
+
+max-height:60px;
+
+object-fit:contain;
+
+}
+
+
+
+#capa{
+
+width:80%;
+
+max-height:260px;
+
+object-fit:contain;
+
+border-radius:12px;
+
+box-shadow:
+
+0 8px 15px #555;
+
+}
+
+
+
+h1{
+
+font-size:26px;
+
+color:#d72626;
+
+margin:15px 0;
+
+}
+
+
+
+.estrelas{
+
+font-size:24px;
+
+color:#f5b400;
+
+margin:15px;
+
+}
+
+
+
+.console{
+
+font-weight:bold;
+
+color:#444;
+
+line-height:1.5;
+
+}
+
+
+
+#botaoJogar{
+
+margin-top:25px;
+
+width:90%;
+
+padding:18px;
 
 font-size:22px;
 
@@ -106,15 +320,19 @@ background:#f5b400;
 
 color:#222;
 
-box-shadow:0 6px 0 #a56d00;
+box-shadow:
+
+0 8px 0 #a56d00;
+
+cursor:pointer;
 
 }
 
 
 
-.botao:active{
+#botaoJogar:active{
 
-transform:translateY(6px);
+transform:translateY(8px);
 
 box-shadow:none;
 
@@ -122,7 +340,38 @@ box-shadow:none;
 
 
 
+.infoJogo{
+
+margin-top:20px;
+
+padding-top:15px;
+
+border-top:2px solid #aaa;
+
+color:#444;
+
+line-height:1.8;
+
+}
+
+
+/* =========================
+   EMULADOR
+========================= */
+
+
+#game{
+
+width:100%;
+
+height:100%;
+
+}
+
+
+
 </style>
+
 
 </head>
 
@@ -131,131 +380,494 @@ box-shadow:none;
 
 
 
-<div id="game"></div>
-
+<!-- =========================
+     BOOT SYSTEM
+========================= -->
 
 
 <div id="boot">
 
 
+<div class="boot-box">
+
+
+<div class="titulo">
+
+████████████████████
+
+<br>
+
+RETROTAG NFC
+
+<br>
+
+████████████████████
+
+</div>
+
+
+<div id="mensagens">
+
+
+<div class="info">
+INICIANDO SISTEMA...
+</div>
+
+
+<div class="ok">
+✓ TAG NFC DETECTADA
+</div>
+
+
+<div class="ok">
+✓ CARTUCHO IDENTIFICADO
+</div>
+
+
+<div class="info" id="consoleTexto">
+CONSOLE......... --
+</div>
+
+
+<div class="info" id="jogoTexto">
+JOGO............ AGUARDE...
+</div>
+
+
+<div class="info">
+STATUS.......... PREPARANDO
+</div>
+
+
+</div>
+
+
+
+<div class="linha"></div>
+
+
+
 <div>
+
+CARREGANDO...
+
+</div>
+
+
+
+<div id="barraArea">
+
+
+<div id="barra">
+
+<div id="progresso"></div>
+
+</div>
+
+
+<div id="porcentagem">
+
+0%
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- =========================
+     CARTUCHO
+========================= -->
+
+
+<div id="cartucho">
+
+
+<div class="card">
 
 
 <div class="logo">
 
-🎮 RETROTAG NFC
+<img id="logoJogo" src="">
 
 </div>
 
 
-<div class="texto">
+<h1 id="nomeJogo">
 
-📦 CARTUCHO DETECTADO
+JOGO
+
+</h1>
+
+
+<img id="capa" src="capa.png">
+
+
+<div class="estrelas">
+
+★★★★★
+
+</div>
+
+
+<div class="console" id="dadosJogo">
+
+SUPER NINTENDO
 
 <br>
 
-🔌 PRONTO PARA INICIAR
+1992
 
 </div>
 
 
-<button class="botao" onclick="iniciarJogo()">
 
-▶ INICIAR
+<button id="botaoJogar" onclick="iniciarJogo()">
+
+▶ INICIAR JOGO
 
 </button>
 
 
+
+<div class="infoJogo">
+
+📱 Compatível Android
+
+<br>
+
+🍎 Compatível iPhone
+
+<br>
+
+🎮 Controles na tela
+
 </div>
 
 
 </div>
 
 
+</div>
 
 
+
+
+<div id="game"></div>
 
 <script>
 
+// =============================
+// LER DADOS DA URL
+// =============================
 
-const url = new URLSearchParams(
-window.location.search
-);
+const parametros = new URLSearchParams(window.location.search);
+
+
+const core = parametros.get("core") || "snes";
+
+const nome = parametros.get("nome") || "RetroTag NFC";
+
+const rom = parametros.get("rom");
+
+
+// =============================
+// DESCOBRIR PASTA DO JOGO
+// =============================
+
+let pastaJogo = "";
+
+if(rom){
+
+pastaJogo = rom.split("/")[0];
+
+}
+
+
+// =============================
+// DEFINIR CAPA AUTOMÁTICA
+// =============================
+
+if(pastaJogo){
+
+document.getElementById("capa").src =
+pastaJogo + "/capa.png";
+
+
+document.getElementById("logoJogo").src =
+pastaJogo + "/logo.png";
+
+}
+
+
+// =============================
+// NOME DO JOGO
+// =============================
+
+document.getElementById("nomeJogo").innerHTML =
+"🎮 " + nome.toUpperCase();
+
+
+document.getElementById("jogoTexto").innerHTML =
+"JOGO............ " + nome.toUpperCase();
+
+
+// =============================
+// CONSOLES
+// =============================
+
+let consoles={
+
+"snes":"SUPER NINTENDO",
+
+"nes":"NINTENDO",
+
+"gba":"GAME BOY ADVANCE",
+
+"gb":"GAME BOY",
+
+"gbc":"GAME BOY COLOR",
+
+"segaMD":"MEGA DRIVE",
+
+"psx":"PLAYSTATION",
+
+"n64":"NINTENDO 64"
+
+};
+
+
+let consoleNome =
+consoles[core] || core.toUpperCase();
+
+
+document.getElementById("consoleTexto").innerHTML =
+"CONSOLE......... " + consoleNome;
+
+
+document.getElementById("dadosJogo").innerHTML =
+consoleNome +
+"<br><br>" +
+"RETROTAG NFC";
 
 
 
-let iniciado=false;
+// =============================
+// ANIMAÇÃO BOOT
+// =============================
 
+
+const mensagens =
+document.querySelectorAll("#mensagens div");
+
+
+let tempo=500;
+
+
+mensagens.forEach((msg)=>{
+
+
+setTimeout(()=>{
+
+msg.style.opacity="1";
+
+},tempo);
+
+
+tempo+=600;
+
+
+});
+
+
+
+// =============================
+// BARRA DE PROGRESSO
+// =============================
+
+
+let porcentagem=0;
+
+
+let barra=setInterval(()=>{
+
+
+porcentagem++;
+
+
+document.getElementById("progresso").style.width =
+porcentagem+"%";
+
+
+document.getElementById("porcentagem").innerHTML =
+porcentagem+"%";
+
+
+
+if(porcentagem>=100){
+
+
+clearInterval(barra);
+
+
+finalizarBoot();
+
+
+}
+
+
+},35);
+
+
+
+
+// =============================
+// FINAL DO BOOT
+// =============================
+
+
+function finalizarBoot(){
+
+
+document.getElementById("jogoTexto").innerHTML =
+"JOGO............ "+nome.toUpperCase();
+
+
+setTimeout(()=>{
+
+
+document.getElementById("boot").style.opacity="0";
+
+
+setTimeout(()=>{
+
+
+document.getElementById("boot").style.display="none";
+
+
+document.getElementById("cartucho").style.display="flex";
+
+
+},800);
+
+
+
+},1000);
+
+
+}
+
+
+
+
+// =============================
+// INICIAR JOGO
+// =============================
 
 
 function iniciarJogo(){
 
 
-if(iniciado) return;
-
-iniciado=true;
+entrarTelaCheia();
 
 
+setTimeout(()=>{
 
-// tela cheia
 
-if(document.documentElement.requestFullscreen){
+carregarEmulador();
 
-document.documentElement.requestFullscreen()
-.catch(()=>{});
+
+},800);
+
 
 }
 
 
 
-// horizontal
+// =============================
+// TELA CHEIA
+// =============================
+
+
+function entrarTelaCheia(){
+
+
+let tela=document.documentElement;
+
+
+
+if(tela.requestFullscreen){
+
+tela.requestFullscreen();
+
+}
+
+else if(tela.webkitRequestFullscreen){
+
+tela.webkitRequestFullscreen();
+
+}
+
+
+
+}
+
+
+// =============================
+// GIRAR CELULAR
+// =============================
+
 
 if(screen.orientation){
+
 
 screen.orientation.lock("landscape")
 .catch(()=>{});
 
+
 }
 
 
 
-// remove tela
-
-document.getElementById("boot").style.display="none";
 
 
+// =============================
+// CARREGAR EMULADOR
+// =============================
 
-// configura emulator
+
+function carregarEmulador(){
+
+
+document.getElementById("cartucho").style.display="none";
+
+
+// Configurações EmulatorJS
 
 
 window.EJS_player="#game";
 
 
-window.EJS_core=
-
-url.get("core") || "snes";
+window.EJS_core=core;
 
 
-
-window.EJS_gameName=
-
-decodeURIComponent(
-url.get("nome") || "RetroTag NFC"
-);
+window.EJS_gameUrl=rom;
 
 
-
-window.EJS_gameUrl=
-
-decodeURIComponent(
-url.get("rom")
-);
+window.EJS_gameName=nome;
 
 
-
-window.EJS_pathtodata=
-
-"https://cdn.emulatorjs.org/stable/data/";
+window.EJS_pathtodata="dados/";
 
 
 
@@ -265,7 +877,7 @@ window.EJS_startOnLoaded=true;
 window.EJS_VirtualGamepad=true;
 
 
-window.EJS_volume=0.6;
+window.EJS_volume=0.5;
 
 
 window.EJS_disableDatabases=true;
@@ -280,15 +892,19 @@ window.EJS_disableAutoLoad=true;
 window.EJS_threads=false;
 
 
-window.EJS_cacheLimit=256;
+window.EJS_color="#000";
 
 
 
-// carrega o EmulatorJS somente agora
+
+// carregar loader
+
 
 let script=document.createElement("script");
 
-script.src="https://cdn.emulatorjs.org/stable/data/loader.js";
+
+script.src="dados/loader.js";
+
 
 document.body.appendChild(script);
 
