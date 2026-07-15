@@ -8,6 +8,7 @@
 
 <title>RetroTag NFC</title>
 
+
 <style>
 
 html,body{
@@ -36,8 +37,9 @@ height:100%;
 #menu{
 
 position:fixed;
-top:12px;
-left:12px;
+
+top:10px;
+left:10px;
 
 z-index:999999;
 
@@ -54,22 +56,18 @@ border:none;
 
 border-radius:8px;
 
-width:40px;
+width:42px;
+
 height:34px;
 
 font-size:18px;
 
 font-weight:bold;
 
-cursor:pointer;
-
-box-shadow:
-0 3px 6px rgba(0,0,0,.7);
-
 }
 
-
 </style>
+
 
 </head>
 
@@ -101,7 +99,7 @@ window.location.search
 
 
 
-EJS_player="#game";
+EJS_player = "#game";
 
 
 
@@ -127,8 +125,7 @@ url.get("rom")
 
 
 
-
-// EmulatorJS
+// CDN EmulatorJS
 
 EJS_pathtodata =
 
@@ -137,9 +134,12 @@ EJS_pathtodata =
 
 
 
-// DESEMPENHO
+// ======================
+// OTIMIZAÇÃO MOBILE
+// ======================
 
-EJS_threads = false;
+
+// desativa recursos pesados
 
 EJS_disableDatabases = true;
 
@@ -148,7 +148,19 @@ EJS_disableAutoSave = true;
 EJS_disableAutoLoad = true;
 
 
-EJS_volume = 0.4;
+// sem threads (melhor compatibilidade)
+
+EJS_threads = false;
+
+
+// memória
+
+EJS_cacheLimit = 256;
+
+
+// volume menor reduz carga
+
+EJS_volume = 0.3;
 
 
 // controles
@@ -161,9 +173,14 @@ EJS_VirtualGamepad = true;
 EJS_startOnLoaded = true;
 
 
-// reduz peso visual
+// sem shaders
 
-EJS_color="#000";
+EJS_shader = "none";
+
+
+// sem filtro pesado
+
+EJS_filter = "nearest";
 
 
 
@@ -171,7 +188,9 @@ EJS_color="#000";
 
 
 
+
 <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
 
 
 
@@ -200,7 +219,6 @@ document.exitFullscreen();
 
 
 </script>
-
 
 
 </body>
