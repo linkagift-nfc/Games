@@ -22,7 +22,10 @@ overflow:hidden;
 
 background:#000;
 
+font-family:Arial,sans-serif;
+
 }
+
 
 #game{
 
@@ -31,7 +34,112 @@ height:100%;
 
 }
 
+
+/* TELA DE BOOT */
+
+#boot{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:#000;
+
+color:white;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+z-index:999999;
+
+}
+
+
+.boot-box{
+
+animation:pulse 1.5s infinite;
+
+}
+
+
+.logo{
+
+font-size:32px;
+
+font-weight:bold;
+
+color:#f5b400;
+
+margin-bottom:30px;
+
+}
+
+
+.texto{
+
+font-size:22px;
+
+line-height:1.8;
+
+}
+
+
+
+.botao{
+
+margin-top:30px;
+
+padding:18px 45px;
+
+font-size:22px;
+
+font-weight:bold;
+
+border:none;
+
+border-radius:12px;
+
+background:#f5b400;
+
+color:#222;
+
+box-shadow:0 6px 0 #a56d00;
+
+}
+
+
+.botao:active{
+
+transform:translateY(6px);
+
+box-shadow:none;
+
+}
+
+
+
+@keyframes pulse{
+
+50%{
+
+opacity:.5;
+
+}
+
+}
+
+
 </style>
+
 
 </head>
 
@@ -40,6 +148,49 @@ height:100%;
 
 
 <div id="game"></div>
+
+
+
+<div id="boot">
+
+
+<div class="boot-box">
+
+
+<div class="logo">
+
+🎮 RETROTAG NFC
+
+</div>
+
+
+<div class="texto">
+
+
+📦 CARTUCHO DETECTADO
+
+<br>
+
+🔌 INSERINDO JOGO
+
+
+</div>
+
+
+
+<button class="botao" onclick="iniciarJogo()">
+
+▶ INICIAR
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
 
 
 
@@ -52,7 +203,7 @@ window.location.search
 
 
 
-EJS_player = "#game";
+EJS_player="#game";
 
 
 EJS_core =
@@ -83,23 +234,31 @@ EJS_pathtodata =
 
 
 
-// configurações
 
-EJS_startOnLoaded = true;
+// desempenho
 
-EJS_VirtualGamepad = true;
+EJS_startOnLoaded=true;
 
-EJS_volume = 0.6;
 
-EJS_disableDatabases = true;
+EJS_VirtualGamepad=true;
 
-EJS_disableAutoSave = true;
 
-EJS_disableAutoLoad = true;
+EJS_volume=0.6;
 
-EJS_threads = false;
 
-EJS_cacheLimit = 256;
+EJS_disableDatabases=true;
+
+
+EJS_disableAutoSave=true;
+
+
+EJS_disableAutoLoad=true;
+
+
+EJS_threads=false;
+
+
+EJS_cacheLimit=256;
 
 
 
@@ -107,30 +266,37 @@ EJS_cacheLimit = 256;
 
 
 
+
 <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
 
 
 
 <script>
 
 
-function ativarModoJogo(){
+function iniciarJogo(){
 
 
-let tela = document.documentElement;
+
+// remove tela inicial
+
+document.getElementById("boot").style.display="none";
 
 
-// fullscreen
 
-if(tela.requestFullscreen){
+// tenta tela cheia
 
-tela.requestFullscreen()
+if(document.documentElement.requestFullscreen){
+
+document.documentElement.requestFullscreen()
 .catch(()=>{});
 
 }
 
 
-// orientação
+
+// tenta girar horizontal
 
 if(screen.orientation){
 
@@ -140,50 +306,13 @@ screen.orientation.lock("landscape")
 }
 
 
+
 }
 
 
 
-
-// tenta quando a página abre
-
-window.onload=function(){
-
-
-setTimeout(function(){
-
-
-ativarModoJogo();
-
-
-},1500);
-
-
-
-};
-
-
-
-// tenta novamente quando o emulador termina
-
-window.addEventListener(
-"load",
-function(){
-
-
-setTimeout(function(){
-
-
-ativarModoJogo();
-
-
-},5000);
-
-
-});
-
-
 </script>
+
 
 
 
