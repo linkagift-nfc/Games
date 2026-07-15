@@ -6,14 +6,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RetroTag NFC - Top Gear</title>
-
+<title>RetroTag NFC</title>
 
 <style>
 
 *{
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
 
 
@@ -28,160 +27,89 @@ justify-content:center;
 
 background:
 linear-gradient(
-#42c9ff,
-#8bd34a
+135deg,
+#111,
+#333
 );
+
+color:white;
 
 }
 
 
-
-/* CARTUCHO */
-
-.cartucho{
+.card{
 
 width:90%;
 max-width:420px;
 
-background:#f5f5f5;
+background:#1b1b1b;
+
+border-radius:20px;
 
 padding:25px;
 
-border-radius:22px;
-
-border:8px solid #38a847;
-
-box-shadow:
-0 15px 35px rgba(0,0,0,.5);
-
 text-align:center;
 
-}
-
-
-
-.logo img{
-
-width:180px;
-
-max-height:60px;
-
-object-fit:contain;
+box-shadow:
+0 10px 30px rgba(0,0,0,.7);
 
 }
 
+
+.logo{
+
+width:150px;
+
+height:150px;
+
+object-fit:cover;
+
+border-radius:15px;
+
+margin-bottom:15px;
+
+border:3px solid #f5b400;
+
+}
 
 
 h1{
 
-font-size:26px;
+margin:10px 0;
 
-margin:18px 0;
-
-color:#d72626;
+font-size:28px;
 
 }
-
-
-
-.capa{
-
-width:80%;
-
-border-radius:12px;
-
-box-shadow:
-0 8px 15px #555;
-
-}
-
-
-
-.estrelas{
-
-font-size:24px;
-
-color:#f5b400;
-
-margin:15px;
-
-}
-
-
-
-.snes{
-
-font-weight:bold;
-
-color:#444;
-
-}
-
 
 
 button{
 
-margin-top:25px;
+margin-top:20px;
 
-width:90%;
+width:100%;
 
-padding:18px;
-
-
-font-size:22px;
-
-font-weight:bold;
-
+padding:15px;
 
 border:none;
 
 border-radius:12px;
 
-
 background:#f5b400;
 
-color:#222;
+font-size:18px;
 
-
-box-shadow:
-0 8px 0 #a56d00;
-
+font-weight:bold;
 
 cursor:pointer;
 
 }
 
 
+button:hover{
 
-button:active{
-
-transform:translateY(8px);
-
-box-shadow:none;
+background:#ffd45a;
 
 }
-
-
-
-.info{
-
-margin-top:25px;
-
-padding-top:15px;
-
-border-top:2px solid #aaa;
-
-color:#444;
-
-line-height:1.8;
-
-}
-
-
-
-
-
-/* TELA DE CARREGAMENTO */
 
 
 #loading{
@@ -190,287 +118,176 @@ display:none;
 
 position:fixed;
 
-top:0;
+inset:0;
 
-left:0;
-
-width:100%;
-
-height:100%;
-
-
-background:#111;
-
-
-color:white;
-
+background:#000;
 
 align-items:center;
 
 justify-content:center;
 
-
-text-align:center;
-
+flex-direction:column;
 
 font-size:22px;
 
+}
 
-z-index:999;
 
+.spinner{
+
+width:45px;
+
+height:45px;
+
+border:5px solid #444;
+
+border-top:5px solid #f5b400;
+
+border-radius:50%;
+
+animation:girar 1s linear infinite;
+
+margin-bottom:20px;
 
 }
 
 
+@keyframes girar{
 
-.loading-box{
-
-animation:pulse 1.5s infinite;
-
+100%{
+transform:rotate(360deg);
 }
 
-
-
-.barra{
-
-
-margin-top:20px;
-
-width:220px;
-
-height:15px;
-
-
-background:#333;
-
-
-border-radius:20px;
-
-
-overflow:hidden;
-
-
 }
-
-
-
-.progresso{
-
-
-height:100%;
-
-width:100%;
-
-
-background:#f5b400;
-
-
-animation:carregar 3s linear;
-
-
-}
-
-
-
-@keyframes carregar{
-
-
-from{
-
-width:0%;
-
-}
-
-
-to{
-
-width:100%;
-
-}
-
-
-}
-
-
-
-@keyframes pulse{
-
-
-50%{
-
-opacity:.5;
-
-}
-
-
-}
-
 
 
 </style>
 
-
 </head>
-
 
 
 <body>
 
 
-
-<div class="cartucho">
-
+<div class="card">
 
 
-<div class="logo">
-
-<img src="logo.png" alt="RetroTag NFC">
-
-</div>
+<img class="logo" src="capa.jpg">
 
 
-
-
-<h1>
-
-🏎️ TOP GEAR
-
+<h1 id="nomeJogo">
+Top Gear
 </h1>
 
 
-
-
-<img 
-class="capa"
-src="topgear.jpg"
->
-
-
-
-
-
-<div class="estrelas">
-
-★★★★★
-
-</div>
-
-
-
-
-<div class="snes">
-
-SUPER NINTENDO<br>
-
-1992
-
-</div>
-
-
-
+<p>
+🎮 Sua cápsula digital NFC
+</p>
 
 
 <button onclick="jogar()">
 
-🟨 JOGAR AGORA
+▶ JOGAR AGORA
 
 </button>
 
 
-
-
-
-<div class="info">
-
-📱 Compatível Android<br>
-
-🍎 Compatível iPhone<br>
-
-🎮 Controles na tela
-
 </div>
-
-
-
-
-</div>
-
-
-
-
-
-
-<!-- CARREGAMENTO -->
 
 
 
 <div id="loading">
 
+<div class="spinner"></div>
 
-
-<div class="loading-box">
-
-
-
-<img src="logo.png" style="width:180px;">
-
-
-<br><br>
-
-
-INSERINDO CARTUCHO...
-
-
-<br><br>
-
-
-🏎️ TOP GEAR
-
-
-
-<div class="barra">
-
-
-<div class="progresso"></div>
-
+Carregando jogo...
 
 </div>
-
-
-<br>
-
-
-CARREGANDO...
-
-
-
-</div>
-
-
-</div>
-
-
-
-
 
 
 
 <script>
 
 
+//============================
+// CONFIGURAÇÃO DO JOGO
+// ALTERE SOMENTE ISSO
+//============================
+
+
+const jogo = {
+
+nome:
+"Top Gear",
+
+core:
+"snes",
+
+rom:
+"top-gear.sfc"
+
+
+};
+
+
+
+//============================
+// DESCOBRE AUTOMATICAMENTE
+// A PASTA ATUAL
+//============================
+
+
 function jogar(){
 
 
-document.getElementById("loading").style.display="flex";
+document
+.getElementById("loading")
+.style.display="flex";
+
+
+
+let pasta =
+window.location.pathname;
+
+
+
+pasta =
+pasta.substring(
+0,
+pasta.lastIndexOf("/")
+);
+
+
+
+let caminhoRom =
+pasta.substring(1)
++
+"/rom/"
++
+jogo.rom;
+
 
 
 setTimeout(function(){
 
 
-window.location.href="emulador.html";
+window.location.href =
+
+"../emulador.html?core="
++
+jogo.core
++
+"&nome="
++
+encodeURIComponent(jogo.nome)
++
+"&rom="
++
+encodeURIComponent(caminhoRom);
 
 
-},3000);
+
+},800);
 
 
 
@@ -481,8 +298,6 @@ window.location.href="emulador.html";
 </script>
 
 
-
 </body>
-
 
 </html>
