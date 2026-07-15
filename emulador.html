@@ -13,45 +13,32 @@
 <style>
 
 html,body{
-
 margin:0;
 padding:0;
-
 width:100%;
 height:100%;
-
 overflow:hidden;
-
 background:#000;
-
 }
 
 
 #game{
-
 width:100%;
 height:100%;
-
 }
 
 
 #menu{
-
 position:fixed;
-
 top:12px;
 left:12px;
-
 z-index:999999;
-
 }
-
 
 
 #fullscreenBtn{
 
 background:#f5b400;
-
 color:#222;
 
 border:none;
@@ -59,7 +46,6 @@ border:none;
 border-radius:8px;
 
 width:40px;
-
 height:34px;
 
 font-size:18px;
@@ -74,19 +60,16 @@ box-shadow:
 }
 
 
-
 </style>
 
 
 </head>
 
 
-
 <body>
 
 
 <div id="game"></div>
-
 
 
 <div id="menu">
@@ -106,26 +89,31 @@ box-shadow:
 
 
 //================================
-// RECEBE DADOS DA URL
+// PEGA INFORMAÇÕES DA URL
 //================================
 
 
-const parametros =
-new URLSearchParams(
+const parametros = new URLSearchParams(
 window.location.search
 );
 
 
 
+// jogador
+
 EJS_player = "#game";
 
 
+
+// console
 
 EJS_core =
 
 parametros.get("core") || "snes";
 
 
+
+// nome
 
 EJS_gameName =
 
@@ -137,7 +125,7 @@ parametros.get("nome") || "RetroTag NFC"
 
 // ROM
 
-EJS_gameUrl =
+let caminhoRom =
 
 decodeURIComponent(
 parametros.get("rom")
@@ -145,11 +133,21 @@ parametros.get("rom")
 
 
 
+// cria endereço absoluto
 
-// PASTA DO EMULATORJS
+EJS_gameUrl =
+
+window.location.href
+.split("?")[0]
+.replace("emulador.html","")
++
+caminhoRom;
+
+
+
+// pasta EmulatorJS
 
 EJS_pathtodata = "data/";
-
 
 
 
@@ -168,7 +166,6 @@ EJS_VirtualGamepad = true;
 EJS_volume = 0.5;
 
 
-
 EJS_disableDatabases = true;
 
 
@@ -176,6 +173,7 @@ EJS_disableAutoSave = true;
 
 
 EJS_disableAutoLoad = true;
+
 
 
 EJS_threads = false;
@@ -189,6 +187,7 @@ EJS_color = "#000";
 
 
 </script>
+
 
 
 
@@ -206,9 +205,7 @@ function abrirTelaCheia(){
 if(!document.fullscreenElement){
 
 
-let tela =
-document.documentElement;
-
+let tela=document.documentElement;
 
 
 if(tela.requestFullscreen){
@@ -220,6 +217,12 @@ tela.requestFullscreen();
 else if(tela.webkitRequestFullscreen){
 
 tela.webkitRequestFullscreen();
+
+}
+
+else if(tela.msRequestFullscreen){
+
+tela.msRequestFullscreen();
 
 }
 
@@ -243,6 +246,7 @@ document.exitFullscreen();
 
 
 </script>
+
 
 
 </body>
