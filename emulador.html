@@ -85,13 +85,10 @@ transform:scale(.92);
 
 </style>
 
-
 </head>
 
 
-
 <body>
-
 
 
 <div id="game"></div>
@@ -113,9 +110,9 @@ transform:scale(.92);
 <script>
 
 
-//==============================
-// PEGA DADOS DA URL
-//==============================
+//================================
+// CONFIGURAÇÃO PELA URL
+//================================
 
 
 const url = new URLSearchParams(
@@ -132,15 +129,25 @@ EJS_player = "#game";
 
 // console
 
-EJS_core = 
+EJS_core =
 
 url.get("core") || "snes";
 
 
 
+
+// nome do jogo
+
+EJS_gameName =
+
+url.get("nome") || "RetroTag NFC";
+
+
+
+
 // ROM
 
-EJS_gameUrl = 
+let romArquivo =
 
 decodeURIComponent(
 url.get("rom")
@@ -148,15 +155,14 @@ url.get("rom")
 
 
 
-// nome
+EJS_gameUrl =
 
-EJS_gameName =
+window.location.origin
++
+"/Games/"
++
+romArquivo;
 
-decodeURIComponent(
-url.get("nome")
-)
-||
-"RetroTag NFC";
 
 
 
@@ -167,9 +173,9 @@ EJS_pathtodata = "data/";
 
 
 
-//==============================
-// CONFIGURAÇÕES
-//==============================
+//================================
+// AJUSTES
+//================================
 
 
 EJS_startOnLoaded = true;
@@ -181,7 +187,6 @@ EJS_VirtualGamepad = true;
 EJS_volume = 0.5;
 
 
-
 EJS_disableDatabases = true;
 
 
@@ -191,17 +196,13 @@ EJS_disableAutoSave = true;
 EJS_disableAutoLoad = true;
 
 
-
-EJS_color = "#000";
-
-
-
-// desempenho celular
-
 EJS_threads = false;
 
 
 EJS_cacheLimit = 512;
+
+
+EJS_color = "#000";
 
 
 
@@ -224,7 +225,7 @@ function abrirTelaCheia(){
 if(!document.fullscreenElement){
 
 
-let tela=document.documentElement;
+let tela = document.documentElement;
 
 
 
@@ -279,8 +280,8 @@ document.msExitFullscreen();
 }
 
 
-
 </script>
+
 
 
 </body>
