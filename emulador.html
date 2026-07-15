@@ -4,12 +4,21 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#000000">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
 
 <title>RetroTag NFC</title>
 
 
 <style>
+
 
 *{
 box-sizing:border-box;
@@ -33,8 +42,9 @@ font-family:"Courier New",monospace;
 }
 
 
+
 /* =========================
-   TELA BOOT
+BOOT
 ========================= */
 
 
@@ -50,7 +60,7 @@ height:100%;
 
 background:#050505;
 
-color:#fff;
+color:white;
 
 display:flex;
 
@@ -61,6 +71,7 @@ justify-content:center;
 z-index:999999;
 
 }
+
 
 
 .boot-box{
@@ -115,24 +126,6 @@ opacity:0;
 
 color:#00ff66;
 
-font-weight:bold;
-
-}
-
-
-
-.info{
-
-color:#fff;
-
-}
-
-
-
-#barraArea{
-
-margin-top:20px;
-
 }
 
 
@@ -176,7 +169,7 @@ margin-top:5px;
 
 
 /* =========================
-   TELA CARTUCHO
+CARTUCHO
 ========================= */
 
 
@@ -233,7 +226,6 @@ box-shadow:
 }
 
 
-
 .logo img{
 
 width:170px;
@@ -257,7 +249,6 @@ object-fit:contain;
 border-radius:12px;
 
 box-shadow:
-
 0 8px 15px #555;
 
 }
@@ -355,8 +346,10 @@ line-height:1.8;
 }
 
 
+
+
 /* =========================
-   EMULADOR
+EMULADOR
 ========================= */
 
 
@@ -381,7 +374,7 @@ height:100%;
 
 
 <!-- =========================
-     BOOT SYSTEM
+BOOT RETROTAG
 ========================= -->
 
 
@@ -406,36 +399,49 @@ RETROTAG NFC
 </div>
 
 
+
 <div id="mensagens">
 
 
-<div class="info">
+<div>
+
 INICIANDO SISTEMA...
+
 </div>
 
 
 <div class="ok">
+
 ✓ TAG NFC DETECTADA
+
 </div>
 
 
 <div class="ok">
+
 ✓ CARTUCHO IDENTIFICADO
+
 </div>
 
 
-<div class="info" id="consoleTexto">
+<div id="consoleTexto">
+
 CONSOLE......... --
+
 </div>
 
 
-<div class="info" id="jogoTexto">
+<div id="jogoTexto">
+
 JOGO............ AGUARDE...
+
 </div>
 
 
-<div class="info">
+<div>
+
 STATUS.......... PREPARANDO
+
 </div>
 
 
@@ -446,7 +452,6 @@ STATUS.......... PREPARANDO
 <div class="linha"></div>
 
 
-
 <div>
 
 CARREGANDO...
@@ -454,13 +459,14 @@ CARREGANDO...
 </div>
 
 
-
-<div id="barraArea">
+<br>
 
 
 <div id="barra">
 
+
 <div id="progresso"></div>
+
 
 </div>
 
@@ -475,10 +481,6 @@ CARREGANDO...
 </div>
 
 
-
-</div>
-
-
 </div>
 
 
@@ -486,7 +488,7 @@ CARREGANDO...
 
 
 <!-- =========================
-     CARTUCHO
+TELA CARTUCHO
 ========================= -->
 
 
@@ -496,11 +498,14 @@ CARREGANDO...
 <div class="card">
 
 
+
 <div class="logo">
 
 <img id="logoJogo" src="">
 
 </div>
+
+
 
 
 <h1 id="nomeJogo">
@@ -510,7 +515,12 @@ JOGO
 </h1>
 
 
-<img id="capa" src="capa.png">
+
+
+<img id="capa" src="">
+
+
+
 
 
 <div class="estrelas">
@@ -520,15 +530,14 @@ JOGO
 </div>
 
 
+
+
 <div class="console" id="dadosJogo">
 
 SUPER NINTENDO
 
-<br>
-
-1992
-
 </div>
+
 
 
 
@@ -537,6 +546,7 @@ SUPER NINTENDO
 ▶ INICIAR JOGO
 
 </button>
+
 
 
 
@@ -555,6 +565,8 @@ SUPER NINTENDO
 </div>
 
 
+
+
 </div>
 
 
@@ -567,25 +579,33 @@ SUPER NINTENDO
 
 <script>
 
+
 // =============================
 // LER DADOS DA URL
 // =============================
+
 
 const parametros = new URLSearchParams(window.location.search);
 
 
 const core = parametros.get("core") || "snes";
 
+
 const nome = parametros.get("nome") || "RetroTag NFC";
 
+
 const rom = parametros.get("rom");
+
+
 
 
 // =============================
 // DESCOBRIR PASTA DO JOGO
 // =============================
 
+
 let pastaJogo = "";
+
 
 if(rom){
 
@@ -594,11 +614,14 @@ pastaJogo = rom.split("/")[0];
 }
 
 
+
 // =============================
-// DEFINIR CAPA AUTOMÁTICA
+// CARREGAR IMAGENS
 // =============================
 
+
 if(pastaJogo){
+
 
 document.getElementById("capa").src =
 pastaJogo + "/capa.png";
@@ -607,58 +630,73 @@ pastaJogo + "/capa.png";
 document.getElementById("logoJogo").src =
 "logo.png";
 
+
 }
 
 
+
+
 // =============================
-// NOME DO JOGO
+// INFORMAÇÕES DO JOGO
 // =============================
+
 
 document.getElementById("nomeJogo").innerHTML =
 "🎮 " + nome.toUpperCase();
+
 
 
 document.getElementById("jogoTexto").innerHTML =
 "JOGO............ " + nome.toUpperCase();
 
 
-// =============================
-// CONSOLES
-// =============================
 
-let consoles={
+
+
+let consoles = {
+
 
 "snes":"SUPER NINTENDO",
 
+
 "nes":"NINTENDO",
+
 
 "gba":"GAME BOY ADVANCE",
 
+
 "gb":"GAME BOY",
+
 
 "gbc":"GAME BOY COLOR",
 
+
 "segaMD":"MEGA DRIVE",
 
-"psx":"PLAYSTATION",
 
-"n64":"NINTENDO 64"
+"psx":"PLAYSTATION"
+
 
 };
+
 
 
 let consoleNome =
 consoles[core] || core.toUpperCase();
 
 
+
 document.getElementById("consoleTexto").innerHTML =
 "CONSOLE......... " + consoleNome;
+
 
 
 document.getElementById("dadosJogo").innerHTML =
 consoleNome +
 "<br><br>" +
-"RETROTAG NFC";
+"1992";
+
+
 
 
 
@@ -671,7 +709,8 @@ const mensagens =
 document.querySelectorAll("#mensagens div");
 
 
-let tempo=500;
+let tempo = 500;
+
 
 
 mensagens.forEach((msg)=>{
@@ -679,38 +718,49 @@ mensagens.forEach((msg)=>{
 
 setTimeout(()=>{
 
+
 msg.style.opacity="1";
+
 
 },tempo);
 
 
-tempo+=600;
+
+tempo += 600;
+
 
 
 });
 
 
 
+
+
 // =============================
-// BARRA DE PROGRESSO
+// BARRA DE CARREGAMENTO
 // =============================
 
 
-let porcentagem=0;
+let porcentagem = 0;
 
 
-let barra=setInterval(()=>{
+
+let barra = setInterval(()=>{
 
 
 porcentagem++;
+
 
 
 document.getElementById("progresso").style.width =
 porcentagem+"%";
 
 
+
 document.getElementById("porcentagem").innerHTML =
 porcentagem+"%";
+
+
 
 
 
@@ -726,27 +776,25 @@ finalizarBoot();
 }
 
 
+
 },35);
 
 
 
 
+
 // =============================
-// FINAL DO BOOT
+// FINAL BOOT
 // =============================
 
 
 function finalizarBoot(){
 
 
+
 document.getElementById("jogoTexto").innerHTML =
-"JOGO............ "+nome.toUpperCase();
+"JOGO............ " + nome.toUpperCase();
 
-
-setTimeout(()=>{
-
-
-document.getElementById("boot").style.opacity="0";
 
 
 setTimeout(()=>{
@@ -758,11 +806,8 @@ document.getElementById("boot").style.display="none";
 document.getElementById("cartucho").style.display="flex";
 
 
-},800);
-
-
-
 },1000);
+
 
 
 }
@@ -770,15 +815,19 @@ document.getElementById("cartucho").style.display="flex";
 
 
 
+
+
 // =============================
-// INICIAR JOGO
+// BOTÃO INICIAR
 // =============================
 
 
 function iniciarJogo(){
 
 
+
 entrarTelaCheia();
+
 
 
 setTimeout(()=>{
@@ -787,63 +836,68 @@ setTimeout(()=>{
 carregarEmulador();
 
 
+
 },800);
+
 
 
 }
 
 
 
+
+
+
 // =============================
-// TELA CHEIA
+// TELA CHEIA + GIRO
 // =============================
 
 
 function entrarTelaCheia(){
 
 
-let tela = document.documentElement;
+
+let tela=document.documentElement;
 
 
-// TELA CHEIA
 
 if(tela.requestFullscreen){
+
 
 tela.requestFullscreen()
 .catch(()=>{});
 
+
 }
+
+
 
 else if(tela.webkitRequestFullscreen){
 
+
 tela.webkitRequestFullscreen();
+
 
 }
 
 
 
-// GIRAR TELA
+
 
 setTimeout(()=>{
+
 
 
 if(screen.orientation && screen.orientation.lock){
 
 
+
 screen.orientation.lock("landscape")
-.then(()=>{
-
-console.log("Tela horizontal ativada");
-
-})
-.catch(()=>{
-
-console.log("Giro bloqueado pelo navegador");
-
-});
+.catch(()=>{});
 
 
 }
+
 
 
 },500);
@@ -852,113 +906,93 @@ console.log("Giro bloqueado pelo navegador");
 
 }
 
-// =============================
-// GIRAR CELULAR
-// =============================
-
-
-if(screen.orientation){
-
-
-screen.orientation.lock("landscape")
-.catch(()=>{});
-
-
-}
 
 
 
 
 
 // =============================
-// CARREGAR EMULADOR
+// CARREGAR EMULATORJS
 // =============================
 
 
 function carregarEmulador(){
 
 
+
 document.getElementById("cartucho").style.display="none";
 
 
-// =============================
-// CONFIGURAÇÕES EMULATORJS
-// =============================
 
 
-window.EJS_player = "#game";
+
+window.EJS_player="#game";
 
 
-window.EJS_core = core;
+
+window.EJS_core=core;
 
 
-window.EJS_gameUrl = rom;
+
+window.EJS_gameUrl =
+window.location.origin +
+"/Games/" +
+rom;
 
 
-window.EJS_gameName = nome;
 
 
-// Usando servidor oficial EmulatorJS
+window.EJS_gameName=nome;
+
+
 
 window.EJS_pathtodata =
 "https://cdn.emulatorjs.org/stable/data/";
 
 
 
-window.EJS_startOnLoaded = true;
 
-
-window.EJS_VirtualGamepad = true;
-
-
-window.EJS_volume = 0.5;
+window.EJS_startOnLoaded=true;
 
 
 
-// desempenho
-
-window.EJS_disableDatabases = true;
-
-
-window.EJS_disableAutoSave = true;
-
-
-window.EJS_disableAutoLoad = true;
-
-
-window.EJS_threads = false;
-
-
-window.EJS_color = "#000";
+window.EJS_VirtualGamepad=true;
 
 
 
-// =============================
-// CARREGAR LOADER
-// =============================
+window.EJS_volume=0.5;
 
 
-let script = document.createElement("script");
+
+window.EJS_disableDatabases=true;
+
+
+
+window.EJS_disableAutoSave=true;
+
+
+
+window.EJS_disableAutoLoad=true;
+
+
+
+window.EJS_threads=false;
+
+
+
+window.EJS_color="#000";
+
+
+
+
+
+
+let script=document.createElement("script");
+
 
 
 script.src =
 "https://cdn.emulatorjs.org/stable/data/loader.js";
-
-
-
-script.onload = function(){
-
-console.log("EmulatorJS carregado");
-
-};
-
-
-
-script.onerror = function(){
-
-console.log("Erro ao carregar EmulatorJS");
-
-};
 
 
 
