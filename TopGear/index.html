@@ -35,7 +35,6 @@ linear-gradient(
 }
 
 
-/* CARTUCHO */
 
 .cartucho{
 
@@ -114,6 +113,8 @@ font-weight:bold;
 
 color:#444;
 
+line-height:1.6;
+
 }
 
 
@@ -126,25 +127,20 @@ width:90%;
 
 padding:18px;
 
-
 font-size:22px;
 
 font-weight:bold;
-
 
 border:none;
 
 border-radius:12px;
 
-
 background:#f5b400;
 
 color:#222;
 
-
 box-shadow:
 0 8px 0 #a56d00;
-
 
 cursor:pointer;
 
@@ -178,145 +174,15 @@ line-height:1.8;
 
 
 
-
-/* TELA DE CARREGAMENTO */
-
-
-#loading{
-
-display:none;
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:100%;
-
-
-background:#111;
-
-
-color:white;
-
-
-align-items:center;
-
-justify-content:center;
-
-
-text-align:center;
-
-
-font-size:22px;
-
-
-z-index:999;
-
-}
-
-
-
-.loading-box{
-
-animation:pulse 1.5s infinite;
-
-}
-
-
-
-.barra{
-
-
-margin-top:20px;
-
-width:220px;
-
-height:15px;
-
-
-background:#333;
-
-
-border-radius:20px;
-
-
-overflow:hidden;
-
-
-}
-
-
-
-.progresso{
-
-
-height:100%;
-
-width:100%;
-
-
-background:#f5b400;
-
-
-animation:carregar 3s linear;
-
-
-}
-
-
-
-@keyframes carregar{
-
-
-from{
-
-width:0%;
-
-}
-
-
-to{
-
-width:100%;
-
-}
-
-
-}
-
-
-
-@keyframes pulse{
-
-
-50%{
-
-opacity:.5;
-
-}
-
-
-}
-
-
-
 </style>
 
-
 </head>
-
 
 
 <body>
 
 
-
 <div class="cartucho">
-
 
 
 <div class="logo">
@@ -327,21 +193,16 @@ opacity:.5;
 
 
 
-
 <h1>
-
 🏎️ TOP GEAR
-
 </h1>
-
 
 
 
 <img 
 class="capa"
-src="topgear.jpg"
+src="capa.png"
 >
-
 
 
 
@@ -350,7 +211,6 @@ src="topgear.jpg"
 ★★★★★
 
 </div>
-
 
 
 
@@ -364,15 +224,11 @@ SUPER NINTENDO<br>
 
 
 
-
-
 <button onclick="jogar()">
 
 🟨 JOGAR AGORA
 
 </button>
-
-
 
 
 
@@ -388,62 +244,7 @@ SUPER NINTENDO<br>
 
 
 
-
 </div>
-
-
-
-
-
-
-
-<div id="loading">
-
-
-
-<div class="loading-box">
-
-
-
-<img src="logo.png" style="width:180px;">
-
-
-<br><br>
-
-
-INSERINDO CARTUCHO...
-
-
-<br><br>
-
-
-🏎️ TOP GEAR
-
-
-
-<div class="barra">
-
-
-<div class="progresso"></div>
-
-
-</div>
-
-
-<br>
-
-
-CARREGANDO...
-
-
-
-</div>
-
-
-</div>
-
-
-
 
 
 
@@ -453,19 +254,14 @@ CARREGANDO...
 function jogar(){
 
 
-document
-.getElementById("loading")
-.style.display="flex";
-
-
-
 // pega automaticamente a pasta atual
 
 let caminhoAtual = window.location.pathname;
 
 
 
-caminhoAtual = caminhoAtual.substring(
+caminhoAtual =
+caminhoAtual.substring(
 0,
 caminhoAtual.lastIndexOf("/")
 );
@@ -474,7 +270,8 @@ caminhoAtual.lastIndexOf("/")
 
 // nome da pasta
 
-let pastaJogo = caminhoAtual.split("/").pop();
+let pastaJogo =
+caminhoAtual.split("/").pop();
 
 
 
@@ -488,17 +285,12 @@ let arquivoRom = "top-gear.sfc";
 
 
 
-// cria caminho da ROM
+// cria caminho ROM
 
 let caminhoRom =
-
 pastaJogo +
 "/rom/" +
 arquivoRom;
-
-
-
-setTimeout(function(){
 
 
 
@@ -518,20 +310,12 @@ encodeURIComponent(caminhoRom);
 
 
 
-},3000);
-
-
-
 }
 
 
 </script>
 
 
-
-
-
 </body>
-
 
 </html>
