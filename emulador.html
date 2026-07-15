@@ -802,13 +802,15 @@ carregarEmulador();
 function entrarTelaCheia(){
 
 
-let tela=document.documentElement;
+let tela = document.documentElement;
 
 
+// TELA CHEIA
 
 if(tela.requestFullscreen){
 
-tela.requestFullscreen();
+tela.requestFullscreen()
+.catch(()=>{});
 
 }
 
@@ -820,8 +822,35 @@ tela.webkitRequestFullscreen();
 
 
 
+// GIRAR TELA
+
+setTimeout(()=>{
+
+
+if(screen.orientation && screen.orientation.lock){
+
+
+screen.orientation.lock("landscape")
+.then(()=>{
+
+console.log("Tela horizontal ativada");
+
+})
+.catch(()=>{
+
+console.log("Giro bloqueado pelo navegador");
+
+});
+
+
 }
 
+
+},500);
+
+
+
+}
 
 // =============================
 // GIRAR CELULAR
