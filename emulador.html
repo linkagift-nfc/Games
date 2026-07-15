@@ -852,58 +852,85 @@ function carregarEmulador(){
 document.getElementById("cartucho").style.display="none";
 
 
-// Configurações EmulatorJS
+// =============================
+// CONFIGURAÇÕES EMULATORJS
+// =============================
 
 
-window.EJS_player="#game";
+window.EJS_player = "#game";
 
 
-window.EJS_core=core;
+window.EJS_core = core;
 
 
-window.EJS_gameUrl=rom;
+window.EJS_gameUrl = rom;
 
 
-window.EJS_gameName=nome;
+window.EJS_gameName = nome;
 
 
-window.EJS_pathtodata="dados/";
+// Usando servidor oficial EmulatorJS
 
-
-
-window.EJS_startOnLoaded=true;
-
-
-window.EJS_VirtualGamepad=true;
-
-
-window.EJS_volume=0.5;
-
-
-window.EJS_disableDatabases=true;
-
-
-window.EJS_disableAutoSave=true;
-
-
-window.EJS_disableAutoLoad=true;
-
-
-window.EJS_threads=false;
-
-
-window.EJS_color="#000";
+window.EJS_pathtodata =
+"https://cdn.emulatorjs.org/stable/data/";
 
 
 
-
-// carregar loader
-
-
-let script=document.createElement("script");
+window.EJS_startOnLoaded = true;
 
 
-script.src="dados/loader.js";
+window.EJS_VirtualGamepad = true;
+
+
+window.EJS_volume = 0.5;
+
+
+
+// desempenho
+
+window.EJS_disableDatabases = true;
+
+
+window.EJS_disableAutoSave = true;
+
+
+window.EJS_disableAutoLoad = true;
+
+
+window.EJS_threads = false;
+
+
+window.EJS_color = "#000";
+
+
+
+// =============================
+// CARREGAR LOADER
+// =============================
+
+
+let script = document.createElement("script");
+
+
+script.src =
+"https://cdn.emulatorjs.org/stable/data/loader.js";
+
+
+
+script.onload = function(){
+
+console.log("EmulatorJS carregado");
+
+};
+
+
+
+script.onerror = function(){
+
+console.log("Erro ao carregar EmulatorJS");
+
+};
+
 
 
 document.body.appendChild(script);
