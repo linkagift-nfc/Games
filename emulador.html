@@ -24,7 +24,6 @@ background:#000;
 
 }
 
-
 #game{
 
 width:100%;
@@ -103,6 +102,7 @@ EJS_threads = false;
 EJS_cacheLimit = 256;
 
 
+
 </script>
 
 
@@ -114,52 +114,59 @@ EJS_cacheLimit = 256;
 <script>
 
 
-// tenta entrar em tela cheia automaticamente
-
-function entrarTelaCheia(){
+let ativado = false;
 
 
-let tela = document.documentElement;
+function modoConsole(){
 
 
-if(tela.requestFullscreen){
+if(ativado) return;
 
-tela.requestFullscreen();
+ativado = true;
 
-}
 
-else if(tela.webkitRequestFullscreen){
 
-tela.webkitRequestFullscreen();
+// tela cheia
 
-}
+if(document.documentElement.requestFullscreen){
 
-else if(tela.msRequestFullscreen){
-
-tela.msRequestFullscreen();
-
-}
-
+document.documentElement.requestFullscreen();
 
 }
 
 
 
-// espera o carregamento do emulador
+// gira horizontal
 
-window.addEventListener("load",function(){
+if(screen.orientation && screen.orientation.lock){
 
+screen.orientation.lock("landscape")
+.catch(function(){});
 
-setTimeout(function(){
-
-
-entrarTelaCheia();
-
-
-},3000);
+}
 
 
-});
+
+}
+
+
+
+
+// primeiro toque ativa
+
+document.addEventListener(
+"touchstart",
+modoConsole,
+{once:true}
+);
+
+
+document.addEventListener(
+"click",
+modoConsole,
+{once:true}
+);
+
 
 
 </script>
