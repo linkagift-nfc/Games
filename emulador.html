@@ -9,6 +9,7 @@
 
 <title>RetroTag NFC</title>
 
+
 <style>
 
 html,body{
@@ -74,8 +75,8 @@ box-shadow:
 }
 
 
-
 </style>
+
 
 </head>
 
@@ -103,7 +104,7 @@ box-shadow:
 
 
 //================================
-// RECEBE DADOS DA URL
+// RECEBE DADOS DO JOGO
 //================================
 
 
@@ -113,21 +114,15 @@ window.location.search
 
 
 
-// área do emulador
-
 EJS_player = "#game";
 
 
-
-// console
 
 EJS_core =
 
 parametros.get("core") || "snes";
 
 
-
-// nome do jogo
 
 EJS_gameName =
 
@@ -139,25 +134,24 @@ parametros.get("nome") || "RetroTag NFC"
 
 // ROM
 
-let caminhoRom =
-
-decodeURIComponent(
+let caminhoRom = decodeURIComponent(
 parametros.get("rom")
 );
 
 
 
-// caminho relativo
-
-EJS_gameUrl =
-
-"./" + caminhoRom;
+EJS_gameUrl = caminhoRom;
 
 
 
-// pasta EmulatorJS
 
-EJS_pathtodata = "data/";
+//================================
+// PASTA DO EMULATORJS
+// SUA PASTA É "Dados"
+//================================
+
+
+EJS_pathtodata = "Dados/";
 
 
 
@@ -199,7 +193,7 @@ EJS_color = "#000";
 
 
 
-<script src="data/loader.js"></script>
+<script src="Dados/loader.js"></script>
 
 
 
