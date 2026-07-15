@@ -14,41 +14,21 @@ html,body{
 
 margin:0;
 padding:0;
+
 width:100%;
 height:100%;
+
 overflow:hidden;
+
 background:#000;
 
 }
+
 
 #game{
 
 width:100%;
 height:100%;
-
-}
-
-
-#menu{
-
-position:fixed;
-top:10px;
-left:10px;
-z-index:999999;
-
-}
-
-
-#fullscreenBtn{
-
-background:#f5b400;
-color:#222;
-border:none;
-border-radius:8px;
-width:42px;
-height:34px;
-font-size:18px;
-font-weight:bold;
 
 }
 
@@ -62,16 +42,6 @@ font-weight:bold;
 
 <div id="game"></div>
 
-
-<div id="menu">
-
-<button id="fullscreenBtn" onclick="abrirTelaCheia()">
-
-⛶
-
-</button>
-
-</div>
 
 
 <script>
@@ -114,16 +84,13 @@ EJS_pathtodata =
 
 
 
+// configurações
 
-//=====================
-// OTIMIZAÇÃO ÁUDIO
-//=====================
+EJS_startOnLoaded = true;
 
+EJS_VirtualGamepad = true;
 
 EJS_volume = 0.6;
-
-
-// evita banco e salvamento
 
 EJS_disableDatabases = true;
 
@@ -131,33 +98,9 @@ EJS_disableAutoSave = true;
 
 EJS_disableAutoLoad = true;
 
-
-// compatibilidade celular
-
 EJS_threads = false;
 
-
-// menos cache
-
 EJS_cacheLimit = 256;
-
-
-// controles
-
-EJS_VirtualGamepad = true;
-
-
-// inicia direto
-
-EJS_startOnLoaded = true;
-
-
-// sem filtros pesados
-
-EJS_shader = "none";
-
-EJS_filter = "nearest";
-
 
 
 </script>
@@ -171,24 +114,56 @@ EJS_filter = "nearest";
 <script>
 
 
-function abrirTelaCheia(){
+// tenta entrar em tela cheia automaticamente
+
+function entrarTelaCheia(){
 
 
-if(!document.fullscreenElement){
+let tela = document.documentElement;
 
-document.documentElement.requestFullscreen();
 
-}else{
+if(tela.requestFullscreen){
 
-document.exitFullscreen();
+tela.requestFullscreen();
+
+}
+
+else if(tela.webkitRequestFullscreen){
+
+tela.webkitRequestFullscreen();
+
+}
+
+else if(tela.msRequestFullscreen){
+
+tela.msRequestFullscreen();
 
 }
 
 
 }
+
+
+
+// espera o carregamento do emulador
+
+window.addEventListener("load",function(){
+
+
+setTimeout(function(){
+
+
+entrarTelaCheia();
+
+
+},3000);
+
+
+});
 
 
 </script>
+
 
 
 </body>
