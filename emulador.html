@@ -35,7 +35,6 @@ height:100%;
 }
 
 
-/* TELA DE BOOT */
 
 #boot{
 
@@ -64,12 +63,6 @@ z-index:999999;
 }
 
 
-.boot-box{
-
-animation:pulse 1.5s infinite;
-
-}
-
 
 .logo{
 
@@ -82,6 +75,7 @@ color:#f5b400;
 margin-bottom:30px;
 
 }
+
 
 
 .texto{
@@ -117,6 +111,7 @@ box-shadow:0 6px 0 #a56d00;
 }
 
 
+
 .botao:active{
 
 transform:translateY(6px);
@@ -127,24 +122,13 @@ box-shadow:none;
 
 
 
-@keyframes pulse{
-
-50%{
-
-opacity:.5;
-
-}
-
-}
-
-
 </style>
-
 
 </head>
 
 
 <body>
+
 
 
 <div id="game"></div>
@@ -154,7 +138,7 @@ opacity:.5;
 <div id="boot">
 
 
-<div class="boot-box">
+<div>
 
 
 <div class="logo">
@@ -166,16 +150,13 @@ opacity:.5;
 
 <div class="texto">
 
-
 📦 CARTUCHO DETECTADO
 
 <br>
 
-🔌 INSERINDO JOGO
-
+🔌 PRONTO PARA INICIAR
 
 </div>
-
 
 
 <button class="botao" onclick="iniciarJogo()">
@@ -185,11 +166,11 @@ opacity:.5;
 </button>
 
 
-
 </div>
 
 
 </div>
+
 
 
 
@@ -203,89 +184,20 @@ window.location.search
 
 
 
-EJS_player="#game";
+let iniciado=false;
 
-
-EJS_core =
-
-url.get("core") || "snes";
-
-
-
-EJS_gameName =
-
-decodeURIComponent(
-url.get("nome") || "RetroTag NFC"
-);
-
-
-
-EJS_gameUrl =
-
-decodeURIComponent(
-url.get("rom")
-);
-
-
-
-EJS_pathtodata =
-
-"https://cdn.emulatorjs.org/stable/data/";
-
-
-
-
-// desempenho
-
-EJS_startOnLoaded=true;
-
-
-EJS_VirtualGamepad=true;
-
-
-EJS_volume=0.6;
-
-
-EJS_disableDatabases=true;
-
-
-EJS_disableAutoSave=true;
-
-
-EJS_disableAutoLoad=true;
-
-
-EJS_threads=false;
-
-
-EJS_cacheLimit=256;
-
-
-
-</script>
-
-
-
-
-<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
-
-
-
-
-<script>
 
 
 function iniciarJogo(){
 
 
+if(iniciado) return;
 
-// remove tela inicial
-
-document.getElementById("boot").style.display="none";
-
+iniciado=true;
 
 
-// tenta tela cheia
+
+// tela cheia
 
 if(document.documentElement.requestFullscreen){
 
@@ -296,7 +208,7 @@ document.documentElement.requestFullscreen()
 
 
 
-// tenta girar horizontal
+// horizontal
 
 if(screen.orientation){
 
@@ -307,13 +219,86 @@ screen.orientation.lock("landscape")
 
 
 
+// remove tela
+
+document.getElementById("boot").style.display="none";
+
+
+
+// configura emulator
+
+
+window.EJS_player="#game";
+
+
+window.EJS_core=
+
+url.get("core") || "snes";
+
+
+
+window.EJS_gameName=
+
+decodeURIComponent(
+url.get("nome") || "RetroTag NFC"
+);
+
+
+
+window.EJS_gameUrl=
+
+decodeURIComponent(
+url.get("rom")
+);
+
+
+
+window.EJS_pathtodata=
+
+"https://cdn.emulatorjs.org/stable/data/";
+
+
+
+window.EJS_startOnLoaded=true;
+
+
+window.EJS_VirtualGamepad=true;
+
+
+window.EJS_volume=0.6;
+
+
+window.EJS_disableDatabases=true;
+
+
+window.EJS_disableAutoSave=true;
+
+
+window.EJS_disableAutoLoad=true;
+
+
+window.EJS_threads=false;
+
+
+window.EJS_cacheLimit=256;
+
+
+
+// carrega o EmulatorJS somente agora
+
+let script=document.createElement("script");
+
+script.src="https://cdn.emulatorjs.org/stable/data/loader.js";
+
+document.body.appendChild(script);
+
+
+
 }
 
 
 
 </script>
-
-
 
 
 </body>
