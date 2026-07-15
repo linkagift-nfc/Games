@@ -42,9 +42,10 @@ position:fixed;
 top:12px;
 left:12px;
 
-z-index:9999999;
+z-index:999999;
 
 }
+
 
 
 #fullscreenBtn{
@@ -70,28 +71,22 @@ cursor:pointer;
 box-shadow:
 0 3px 6px rgba(0,0,0,.7);
 
-opacity:.9;
-
 }
 
-
-
-#fullscreenBtn:active{
-
-transform:scale(.92);
-
-}
 
 
 </style>
 
+
 </head>
+
 
 
 <body>
 
 
 <div id="game"></div>
+
 
 
 <div id="menu">
@@ -111,70 +106,56 @@ transform:scale(.92);
 
 
 //================================
-// CONFIGURAÇÃO PELA URL
+// RECEBE DADOS DA URL
 //================================
 
 
-const url = new URLSearchParams(
+const parametros =
+new URLSearchParams(
 window.location.search
 );
 
 
 
-// área do emulador
-
 EJS_player = "#game";
 
 
 
-// console
-
 EJS_core =
 
-url.get("core") || "snes";
+parametros.get("core") || "snes";
 
 
-
-
-// nome do jogo
 
 EJS_gameName =
 
-url.get("nome") || "RetroTag NFC";
-
+decodeURIComponent(
+parametros.get("nome") || "RetroTag NFC"
+);
 
 
 
 // ROM
 
-let romArquivo =
+EJS_gameUrl =
 
 decodeURIComponent(
-url.get("rom")
+parametros.get("rom")
 );
 
 
 
-EJS_gameUrl =
 
-window.location.origin
-+
-"/Games/"
-+
-romArquivo;
-
-
-
-
-// pasta EmulatorJS
+// PASTA DO EMULATORJS
 
 EJS_pathtodata = "data/";
 
 
 
 
+
 //================================
-// AJUSTES
+// CONFIGURAÇÕES
 //================================
 
 
@@ -185,6 +166,7 @@ EJS_VirtualGamepad = true;
 
 
 EJS_volume = 0.5;
+
 
 
 EJS_disableDatabases = true;
@@ -210,7 +192,6 @@ EJS_color = "#000";
 
 
 
-
 <script src="data/loader.js"></script>
 
 
@@ -225,7 +206,8 @@ function abrirTelaCheia(){
 if(!document.fullscreenElement){
 
 
-let tela = document.documentElement;
+let tela =
+document.documentElement;
 
 
 
@@ -241,16 +223,9 @@ tela.webkitRequestFullscreen();
 
 }
 
-else if(tela.msRequestFullscreen){
-
-tela.msRequestFullscreen();
-
-}
-
 
 
 }else{
-
 
 
 if(document.exitFullscreen){
@@ -258,19 +233,6 @@ if(document.exitFullscreen){
 document.exitFullscreen();
 
 }
-
-else if(document.webkitExitFullscreen){
-
-document.webkitExitFullscreen();
-
-}
-
-else if(document.msExitFullscreen){
-
-document.msExitFullscreen();
-
-}
-
 
 
 }
@@ -281,7 +243,6 @@ document.msExitFullscreen();
 
 
 </script>
-
 
 
 </body>
