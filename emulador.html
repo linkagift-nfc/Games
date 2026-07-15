@@ -114,59 +114,73 @@ EJS_cacheLimit = 256;
 <script>
 
 
-let ativado = false;
+function ativarModoJogo(){
 
 
-function modoConsole(){
+let tela = document.documentElement;
 
 
-if(ativado) return;
+// fullscreen
 
-ativado = true;
+if(tela.requestFullscreen){
 
-
-
-// tela cheia
-
-if(document.documentElement.requestFullscreen){
-
-document.documentElement.requestFullscreen();
+tela.requestFullscreen()
+.catch(()=>{});
 
 }
 
 
+// orientação
 
-// gira horizontal
-
-if(screen.orientation && screen.orientation.lock){
+if(screen.orientation){
 
 screen.orientation.lock("landscape")
-.catch(function(){});
+.catch(()=>{});
+
+}
+
 
 }
 
 
 
-}
+
+// tenta quando a página abre
+
+window.onload=function(){
+
+
+setTimeout(function(){
+
+
+ativarModoJogo();
+
+
+},1500);
 
 
 
-
-// primeiro toque ativa
-
-document.addEventListener(
-"touchstart",
-modoConsole,
-{once:true}
-);
+};
 
 
-document.addEventListener(
-"click",
-modoConsole,
-{once:true}
-);
 
+// tenta novamente quando o emulador termina
+
+window.addEventListener(
+"load",
+function(){
+
+
+setTimeout(function(){
+
+
+ativarModoJogo();
+
+
+},5000);
+
+
+});
 
 
 </script>
