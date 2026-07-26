@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RetroTag NFC - The Magical Quest Starring Mickey Mouse</title>
+
+</head>
+
+
+<body>
+
+
+<script>
+
+
+// Nome do jogo
+
+let nomeJogo = "The Magical Quest Starring Mickey Mouse";
+
+
+// Console
+
+let consoleJogo = "snes";
+
+
+// ROM
+
+let arquivoRom = "Magical Quest Starring Mickey Mouse, The (USA).sfc";
+
+
+// Pasta atual automaticamente
+
+let pastaJogo = window.location.pathname
+.substring(
+0,
+window.location.pathname.lastIndexOf("/")
+)
+.split("/")
+.pop();
+
+
+// Caminho da ROM
+
+let caminhoRom = 
+pastaJogo +
+"/rom/" +
+arquivoRom;
+
+
+
+// Envia para o emulador
+
+window.location.href =
+
+"../emulador.html?core="
++
+consoleJogo
++
+"&nome="
++
+encodeURIComponent(nomeJogo)
++
+"&rom="
++
+encodeURIComponent(caminhoRom);
+
+
+</script>
+
+
+</body>
+
+</html>
